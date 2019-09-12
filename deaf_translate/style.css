@@ -1,0 +1,55 @@
+html {
+	min-height: 100vh;
+}
+body {
+	background: linear-gradient(#376BB3, #8EAFDC) no-repeat;
+	font-family: 'Arial', sans-serif;
+}
+.container {
+	margin: 0 auto;
+	max-width: 800px;
+}
+.hidden {
+	display: none!important;
+}
+.hint {
+	color: #fff;
+	font-weight: 700;
+	margin: 10px;
+}
+form {
+	margin: 150px 0 20px 0;
+	text-align: center;
+}
+.input_text {
+	padding: 10px;
+	font-size: 18px;
+	border: none;
+}
+
+.input_btn {
+	padding: 10px;
+	font-size: 18px;
+	color: #fff;
+	background-color: black;
+	border: none;
+}
+
+.btn__help {
+	color: #fff;
+	cursor: pointer;
+}
+
+.img {
+	display: block;
+}
+
+.subtitle {
+	display: table;
+	text-align: center;
+	background-color: rgba(0,0,0,.5);
+	color: #fff;
+	margin: 10px auto;
+	padding: 10px;
+    line-height: 1;
+}

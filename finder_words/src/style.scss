@@ -1,0 +1,43 @@
+//@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+//@import '../node_modules/bootstrap/scss/bootstrap-grid';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+.finder {
+	margin: auto;
+	&__input {
+		min-height: 50px;
+		max-height: 200px;
+		width: 90%;
+		letter-spacing: 2px;
+	}
+	&__title {
+		
+	}
+	&__langs {
+		display: flex;
+	  justify-content: space-evenly;
+	  & input {
+	  	margin: 0 10px 0 0;
+	  }
+	}
+	&__btn {
+		display: block;
+		margin: auto;
+	}
+	&__count {
+		margin: 20px;
+	}
+	&__result {
+		white-space: pre-line;
+		margin: 20px;
+		letter-spacing: 2px;
+	}
+}
+.finded-word {
+	background-color:#ce1718;
+	color:#fff;
+	padding: 3px;
+}
+.hidden {
+	display: none!important;
+}

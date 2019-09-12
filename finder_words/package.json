@@ -1,0 +1,16 @@
+{
+  "name": "finder_words",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gavrilinvv",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^4.1.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  }
+}

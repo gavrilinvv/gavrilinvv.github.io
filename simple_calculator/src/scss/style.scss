@@ -1,0 +1,44 @@
+*{
+	outline: none;
+}
+body {
+	background: linear-gradient(to right, #98a4ff, #ff3f40);
+}
+.field {
+  text-align: right;
+  padding: 10px;
+  width: 165px;
+  box-sizing: border-box;
+  font-size: 18px;
+  margin: 0 0 5px 0;
+  border: 0;
+}
+.calcForm {
+	margin: 200px auto 0 auto;
+  width: 165px;
+  box-sizing: border-box;
+}
+
+.numpad {
+	border-spacing: 1px;
+	& td {
+		padding: 0;
+	}
+	&__btn {
+		width: 40px;
+	  height: 40px;
+	  cursor: pointer;
+		background-color: #ccc;
+		border: 0;
+		font-size: 18px;
+		transition: .1s;
+		&:hover {
+			background-color: #ffdb6ee3;
+			border: 1px solid #fff;
+			transition: .1s;
+		}
+		&:active {
+			background-color: #fff;
+		}
+	}
+}

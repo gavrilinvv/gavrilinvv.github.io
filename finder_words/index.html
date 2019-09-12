@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="build/css/style.css"></link>
+</head>
+<body>
+
+
+	<div id="app" class="align-content-center">	
+		<div class="finder text-center p-5">
+			<h5 class="finder__title">Буквы какого языка нужно найти?</h5>
+			<textarea class="finder__input" name="" id="" rows="10" v-model="res"></textarea>
+			<div>
+				<div class="finder__langs">
+					<label><input type="radio" name="lang" value="rus" checked v-on:click="cnghLang">Русский</label>
+					<label><input type="radio" name="lang" value="eng" v-on:click="cnghLang">English</label>
+				</div>
+				<button v-on:click="find" class="finder__btn btn btn-warning">Найти</button>
+				<p class="finder__count hidden">Найдено символов: <span></span></p>
+				<p class="finder__result">{{res}}</p>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				res:'',
+				lang:'rus',
+				rus:'абвгдеёжзийклмнопрстуфхцчшщьыъэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЪЭЮЯ'.split(''),
+				eng:'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
+			},
+			methods:{
+				cnghLang:function(ev){
+					app.lang = ev.target.value;
+				},
+				find:function(){
+					var lang = app.lang, // выбранный язык
+							findWords = [];
+					for(var i = 0; i<app[lang].length; i++){
+						var word = app[lang][i];
+						if(app.res.indexOf(word)!=-1){
+							var findWord = app.res.indexOf(word);
+							findWords.push(app.res[findWord]);
+						}
+					}
+					var count = 0,
+							result = [];
+					for(var j = 0; j<app.res.length; j++){
+						var curWord = app.res[j];
+						if(findWords.indexOf(curWord)!=-1){
+							count++;
+							curWord = '<span class="finded-word">'+curWord+'</span>';
+						}
+						result.push(curWord);
+					}
+					$('.finder__count').removeClass('hidden').find('span').html(count);
+					$('.finder__result').html(result);
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>
