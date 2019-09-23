@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	function calc() {
 		try {
 			field.value = eval(field.value);
+			if(field.value == 'Infinity') {field.value = 'Error';}
 		} catch(err) {
 			alert('В выражении ошибка');
 		}
