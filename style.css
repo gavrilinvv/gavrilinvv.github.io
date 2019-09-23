@@ -1,17 +1,70 @@
-* {
-	font-family: monospace;
-	color: #333;
+@font-face {
+    font-family: "Raleway";
+    src: url("fonts/Raleway-Regular.ttf");
 }
-nav {
+
+* {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: .2s;
+}
+
+body {
+    background: url('img/greeting-bg.jpg') no-repeat;
+    background-position: right;
+    background-size: cover;
+    height: 100vh;
+}
+
+.title {
+    font-size: 2rem;
+    text-align: center;
+    padding: 20px 0;
+}
+.list {
 	list-style: none;
 	text-align: center;
 }
-nav a {
-	display: block;
-	font-size: 16px;
-	text-decoration: none
+.list__link {
+	display: inline-block;
+    font-size: 1.3rem;
+	text-decoration: none;
+    padding: 3px;
 }
-nav a:hover {
-	text-decoration: underline;
-	font-weight: 700;
+.list__link:hover {
+    color: #fff;
+    background: #333;
+}
+
+.header {
+    border-bottom: 2px solid #333;
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    min-width: 320px;
+    padding: 0 15px;
+    margin: 0 auto;
+    /*position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);*/
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 320px;
+    }
+    .title {
+        font-size: 1.5em;
+    }
+    .list__link {
+        padding: 3px;
+        font-size: 1.1rem;
+    }
 }
