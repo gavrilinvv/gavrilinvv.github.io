@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function searchWord(word) {
+		word = word.toLowerCase();
 		for(var i = 0; i<words.length; i++) {
 			if( words[i].vars.indexOf(word) != -1 ) {
 
