@@ -196,13 +196,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if(Array.isArray(elems)) {
             for(var i = 0; i < elems.length; i++) {
                 _creating(elems[i]);
-                _animationElement();
+                if(!isMobile()) {
+                    _animationElement();
+                }
                 updateLocalStorage(elems[i].id);
                 updateCounter();
             }
         } else {
             _creating(elems, coords);
-            _animationElement();
+            if(!isMobile()) {
+                _animationElement();
+            }
             updateLocalStorage(elems.id);
             updateCounter();
         }
@@ -233,7 +237,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var elem = document.createElement('div');
             elem.classList.add('element');
-            elem.classList.add('_scaling');
+            if(!isMobile()) {
+                elem.classList.add('_normal-scaling');
+                elem.classList.add('_scaling');
+            }
             elem.setAttribute('data-name', className);
             elem.setAttribute('data-text', text);
             var img = document.createElement('div');
@@ -415,5 +422,9 @@ document.addEventListener('DOMContentLoaded', function() {
         $(notice).delay(3000).fadeOut(1000, function() {
             $(this).text('');
         }).fadeIn(1);
+    }
+
+    function isMobile() {
+        return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera)
     }
 })
