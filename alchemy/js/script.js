@@ -195,20 +195,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // проверяем пришел ли массив в качестве аргумента
         if(Array.isArray(elems)) {
             for(var i = 0; i < elems.length; i++) {
-                //if(elems[i].isBase) { // проверяем является ли элемент базовым
-                    _creating(elems[i]);
-                    updateLocalStorage(elems[i].id);
-                    updateCounter();
-                //}
+                _creating(elems[i]);
+                _animationElement();
+                updateLocalStorage(elems[i].id);
+                updateCounter();
             }
         } else {
             _creating(elems, coords);
+            _animationElement();
             updateLocalStorage(elems.id);
             updateCounter();
         }
 
         function _creating(elem, coords) {
             area.appendChild(_creatingElement(elem, coords));
+
             $('[data-name='+elem.class+']').draggable({
                 start: function(e, ui) {
                     $(trash).show();
@@ -232,6 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var elem = document.createElement('div');
             elem.classList.add('element');
+            elem.classList.add('_scaling');
             elem.setAttribute('data-name', className);
             elem.setAttribute('data-text', text);
             var img = document.createElement('div');
@@ -258,6 +260,13 @@ document.addEventListener('DOMContentLoaded', function() {
             elem.appendChild(img);
             elem.appendChild(name);
             return elem;
+        }
+
+        function _animationElement() {
+            $('.element').removeClass('_scaling'); // анимация появления
+            setTimeout(function() {
+                $('.element').css({transition: '0s'}); // убираем плавность чтобы не отразилось на последующем перемещении элемента
+            }, 400);
         }
     }
     
@@ -384,7 +393,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // создание 4 базовых элемента при двойном клике на поле
     function dblClickCreateBaseElems() {
         document.addEventListener('dblclick touch', function(e) {
-            console.log('work');
             var coords = {x: e.pageX, y: e.pageY};
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
