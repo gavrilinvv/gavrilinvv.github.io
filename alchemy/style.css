@@ -25,6 +25,9 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.element._normal-scaling {
   -webkit-transform: scale(1);
           transform: scale(1);
   -webkit-transition: .3s;
