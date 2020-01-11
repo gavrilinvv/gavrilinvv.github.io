@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+    var mc = new Hammer.Manager(document);
+    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+    mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan')]);        
+    mc.add( new Hammer.Tap({event: 'doubletap', taps: 2 }));
+    mc.add(new Hammer.Tap( { event: 'singletap' } ));
+    mc.add( new Hammer.Swipe()).recognizeWith( [mc.get('pan')] );
+
     var counter = document.querySelector('.counter');
     var notice = document.querySelector('.notice');
     var area = document.querySelector('.area');
