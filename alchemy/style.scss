@@ -22,6 +22,11 @@ body {
     position: absolute;
     background-color: transparent;
     user-select: none;
+    transform: scale(1);
+    transition: .3s;
+    &._scaling {
+        transform: scale(0.1);
+    }
     @media screen and (max-width: 768px) {
         width: 80px;
         height: 50px;

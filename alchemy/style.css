@@ -25,6 +25,15 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.element._scaling {
+  -webkit-transform: scale(0.1);
+          transform: scale(0.1);
 }
 
 @media screen and (max-width: 768px) {
