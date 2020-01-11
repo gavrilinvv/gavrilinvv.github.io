@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
         });
-        Hammer(document).on("doubletap", function(e) {
+        mc.on("doubletap", function(e) {
             var coords = {x: e.pageX, y: e.pageY};
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
