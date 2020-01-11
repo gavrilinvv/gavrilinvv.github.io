@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "isBase": true,
+        "class": "fire",
+        "text": "Огонь"
+    },
+    {
+        "id": 2,
+        "isBase": true,
+        "class": "water",
+        "text": "Вода"
+    },
+    {
+        "id": 3,
+        "isBase": true,
+        "class": "air",
+        "text": "Воздух"
+    },
+    {
+        "id": 4,
+        "isBase": true,
+        "class": "ground",
+        "text": "Земля"
+    },
+    {
+        "id": 5,
+        "class": "vulcano",
+        "text": "Вулкан",
+        "recept": ["fire", "ground"]
+    },
+    {
+        "id": 6,
+        "class": "plant",
+        "text": "Растение",
+        "recept": ["water", "ground"]
+    },
+    {
+        "id": 7,
+        "class": "meteor",
+        "text": "Метеорит",
+        "recept": ["air", "fire"]
+    },
+    {
+        "id": 8,
+        "class": "iron",
+        "text": "Железо",
+        "recept": ["meteor", "ground"]
+    }
+]
