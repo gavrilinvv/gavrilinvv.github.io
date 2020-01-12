@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function initEvents() {
         dblClickCreateBaseElems();
         removeElement();
-        dblClickCopyElem();
     }
 
     function removeElement() {
@@ -233,19 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            mcElem = new Hammer.Manager(elemDOM);
-            mcElem.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
-            mcElem.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mcElem.get('pan')]);        
-            mcElem.add( new Hammer.Tap({event: 'doubletap', taps: 2 }));
-            mcElem.add(new Hammer.Tap( { event: 'singletap' } ));
-            mcElem.add( new Hammer.Swipe()).recognizeWith( [mcElem.get('pan')] );
-
-            mcElem.on("doubletap", function(e) {
-                copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
-                console.log(e);
-                addElement(copyElem, {x: e.srcEvent.pageX+40, y: e.srcEvent.pageY+40});
-            });
-
+            // привязывание события для копирования элемента
+            dblClickCopyElem(elemDOM);
         }
 
         // создание DOM-элемента
@@ -309,6 +297,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 $('.element').css({transition: '0s'}); // убираем плавность чтобы не отразилось на последующем перемещении элемента
             }, 400);
         }
+    }
+
+    function dblClickCopyElem(elemDOM) {
+        mcElem = new Hammer.Manager(elemDOM);
+        mcElem.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+        mcElem.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mcElem.get('pan')]);        
+        mcElem.add( new Hammer.Tap({event: 'doubletap', taps: 2 }));
+        mcElem.add(new Hammer.Tap( { event: 'singletap' } ));
+        mcElem.add( new Hammer.Swipe()).recognizeWith( [mcElem.get('pan')] );
+
+        mcElem.on("doubletap", function(e) {
+            copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
+            addElement(copyElem, {x: e.srcEvent.pageX+40, y: e.srcEvent.pageY+40});
+        });
     }
     
     function genRandomCoord(w, h) {
@@ -449,15 +451,6 @@ document.addEventListener('DOMContentLoaded', function() {
             addElement(elems, coords);
         });
     }
-
-    // копирование элемента
-    // function dblClickCopyElem() {
-    //     var copyElem = '';
-    //     $('.element').on('dblclick', function(e) {
-    //         copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
-    //         addElement(copyElem, {x: e.pageX+40, y: e.pageY+40});
-    //     });
-    // }
 
     function updateCounter() {
         var count = localStorage.getItem(LSName);
