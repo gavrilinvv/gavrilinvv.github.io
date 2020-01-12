@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function initEvents() {
         dblClickCreateBaseElems();
         removeElement();
-        //dblClickCopyElem();
+        dblClickCopyElem();
     }
 
     function removeElement() {
@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function _creatingElement(elemObj, coords) {
             var className = elemObj.class;
             var text = elemObj.text;
+            var id = elemObj.id;
             var isFinalElem = isLastElem(elemObj);
 
             // высота и ширина элемента. нужна для координат
@@ -249,6 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             elem.setAttribute('data-name', className);
             elem.setAttribute('data-text', text);
+            elem.setAttribute('data-id', id);
             var img = document.createElement('div');
             img.classList.add('element__img');
 
@@ -423,6 +425,8 @@ document.addEventListener('DOMContentLoaded', function() {
             addElement(elems, coords);
         }('firstEvent'));
         mc.on("doubletap", function(e) {
+            // отменяем функцию, если тапаем по элементу
+            if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
             var coords = {x: e.pageX, y: e.pageY};
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
@@ -431,9 +435,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // копирование элемента
     function dblClickCopyElem() {
-        var element = document.querySelector('.element');
-        element.addEventListener('dblclick', function() {
-            console.log();
+        var copyElem = '';
+        $('.element').on('dblclick', function(e) {
+            copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
+            addElement(copyElem, {x: e.pageX+40, y: e.pageY+40});
         })
     }
 
