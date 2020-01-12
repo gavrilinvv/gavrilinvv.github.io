@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     mc.add(new Hammer.Tap( { event: 'singletap' } ));
     mc.add( new Hammer.Swipe()).recognizeWith( [mc.get('pan')] );
 
+    var mcElem;
+
     var counter = document.querySelector('.counter');
     var notice = document.querySelector('.notice');
     var area = document.querySelector('.area');
@@ -214,7 +216,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         function _creating(elem, coords) {
-            area.appendChild(_creatingElement(elem, coords));
+            var elemDOM = _creatingElement(elem, coords);
+            area.appendChild(elemDOM);
 
             $('[data-name='+elem.class+']').draggable({
                 start: function(e, ui) {
@@ -229,6 +232,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     checkNewElement(e.target, ui.draggable[0], {x: e.pageX, y: e.pageY})
                 }
             });
+
+            mcElem = new Hammer.Manager(elemDOM);
+            mcElem.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+            mcElem.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mcElem.get('pan')]);        
+            mcElem.add( new Hammer.Tap({event: 'doubletap', taps: 2 }));
+            mcElem.add(new Hammer.Tap( { event: 'singletap' } ));
+            mcElem.add( new Hammer.Swipe()).recognizeWith( [mcElem.get('pan')] );
+
+            mcElem.on("doubletap", function(e) {
+                copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
+                console.log(e);
+                addElement(copyElem, {x: e.srcEvent.pageX+40, y: e.srcEvent.pageY+40});
+            });
+
         }
 
         // создание DOM-элемента
@@ -434,13 +451,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // копирование элемента
-    function dblClickCopyElem() {
-        var copyElem = '';
-        $('.element').on('dblclick', function(e) {
-            copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
-            addElement(copyElem, {x: e.pageX+40, y: e.pageY+40});
-        })
-    }
+    // function dblClickCopyElem() {
+    //     var copyElem = '';
+    //     $('.element').on('dblclick', function(e) {
+    //         copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
+    //         addElement(copyElem, {x: e.pageX+40, y: e.pageY+40});
+    //     });
+    // }
 
     function updateCounter() {
         var count = localStorage.getItem(LSName);
