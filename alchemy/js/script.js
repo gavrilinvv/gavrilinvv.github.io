@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var area = document.querySelector('.area');
     var trash = document.querySelector('.tool__remove');
     var LSName = 'alData:openedElems';
+    var scrollBar = '';
     var elements = [
         {
             "id": 1,
@@ -66,17 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
             "text": "Море",
             "recept": [["salt", "water"],["water", "water"]]
         },
-        // {
-        //     "id": 10,
-        //     "isBase": true,
-        //     "class": "salt",
-        //     "text": "Соль"
-        // }
+        {
+            "id": 10,
+            "class": "wind",
+            "text": "Ветер",
+            "recept": [["air", "air"]]
+        }
     ];
 
     initLocalStorage();
     initEvents();
     updateCounter();
+    initSimpleBar();
     initCatalog();
 
     function initEvents() {
@@ -235,6 +237,10 @@ document.addEventListener('DOMContentLoaded', function() {
             var text = elemObj.text;
             var isFinalElem = isLastElem(elemObj);
 
+            // высота и ширина элемента. нужна для координат
+            var elementWidth;
+            var elementHeight;
+
             var elem = document.createElement('div');
             elem.classList.add('element');
             if(!isMobile()) {
@@ -260,6 +266,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // генерируем координаты на основе размеров поля, если не указаны конкретно
             if(!coords) {
                 coords = genRandomCoord(area.offsetWidth, area.offsetHeight);
+            } else {
+                /* т.к. координаты нового элемента будут считаться от верхнего левого угла,
+                а координаты события находятся в центре элементов-родителей,
+                новый элемент будет смещаться вниз и вправо.
+                поэтому смещаем координаты обратно на половину размера иконки */
+                elementWidth = $('.element').css('width').replace('px', '')
+                elementHeight = $('.element').css('height').replace('px', '')
+                coords.x = coords.x - (elementWidth/2);
+                coords.y = coords.y - (elementHeight/2);
             }
             
             elem.setAttribute('style', 'left:'+coords.x+'px;top:'+coords.y+'px');
@@ -322,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // создание сообщения о создании нового элемента
     function createNoticeNewElem(a, b, result) {
-        return 'Вы создали новый элемент: '+a.getAttribute('data-text')+' + '+b.getAttribute('data-text')+' = '+result.text;
+        return 'Новый элемент:<br>'+a.getAttribute('data-text')+' + '+b.getAttribute('data-text')+' = '+result.text+'<br>';
     }
 
     function isLastElem(target) {
@@ -399,11 +414,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // создание 4 базовых элемента при двойном клике на поле
     function dblClickCreateBaseElems() {
-        document.addEventListener('dblclick touch', function(e) {
+        document.addEventListener('dblclick', function(e) {
             var coords = {x: e.pageX, y: e.pageY};
+            if(arguments[0] == 'firstEvent') {
+                coords = {x: area.pageX, y: area.pageY};
+            }
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
-        });
+        }('firstEvent'));
         mc.on("doubletap", function(e) {
             var coords = {x: e.pageX, y: e.pageY};
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
@@ -418,13 +436,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function newNotice(msg) {
-        notice.innerText = msg;
-        $(notice).delay(3000).fadeOut(1000, function() {
-            $(this).text('');
-        }).fadeIn(1);
+        var noticeContainer = document.querySelectorAll('.tools__section')[0];
+        notice.innerHTML += msg+'<br>';
+        //noticeContainer.scrollTop = noticeContainer.scrollHeight;
+        scrollBar.getScrollElement().scrollTop = 100;
+        // $(notice).delay(3000).fadeOut(1000, function() {
+        //     $(this).text('');
+        // }).fadeIn(1);
     }
 
+    // определение устройства
     function isMobile() {
         return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera)
+    }
+
+    function initSimpleBar() {
+        scrollBar = new SimpleBar(document.querySelector('.tools__section'), { autoHide: false });
     }
 })
