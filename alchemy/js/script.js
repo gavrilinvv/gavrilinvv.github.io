@@ -414,7 +414,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // создание 4 базовых элемента при двойном клике на поле
     function dblClickCreateBaseElems() {
-        document.addEventListener('dblclick', function(e) {
+        // document.addEventListener('dblclick', function(e) {
+        //     var coords = {x: e.pageX, y: e.pageY};
+        //     if(arguments[0] == 'firstEvent') {
+        //         coords = {x: area.pageX, y: area.pageY};
+        //     }
+        //     elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
+        //     addElement(elems, coords);
+        // }('firstEvent'));
+        mc.on("doubletap", function(e) {
             var coords = {x: e.pageX, y: e.pageY};
             if(arguments[0] == 'firstEvent') {
                 coords = {x: area.pageX, y: area.pageY};
@@ -422,11 +430,14 @@ document.addEventListener('DOMContentLoaded', function() {
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
         }('firstEvent'));
-        mc.on("doubletap", function(e) {
-            var coords = {x: e.pageX, y: e.pageY};
-            elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
-            addElement(elems, coords);
-        });
+    }
+
+    // копирование элемента
+    function dblClickCopyElem() {
+        var element = document.querySelector('.element');
+        element.addEventListener('dblclick', function() {
+            console.log();
+        })
     }
 
     function updateCounter() {
