@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var notice = document.querySelector('.notice');
     var area = document.querySelector('.area');
     var trash = document.querySelector('.tool__remove');
+    var catalogTool = document.querySelector('.tool__catalog');
+    var infoTool = document.querySelector('.tool__info');
     var LSName = 'alData:openedElems';
     var scrollBar = '';
     var elements = [
@@ -47,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             "id": 6,
-            "class": "plant",
-            "text": "Растение",
+            "class": "swamp",
+            "text": "Болото",
             "recept": [["water", "ground"]]
         },
         {
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             "id": 8,
-            "class": "iron",
+            "class": "ferrum",
             "text": "Железо",
             "recept": [["meteor", "ground"]]
         },
@@ -74,6 +76,36 @@ document.addEventListener('DOMContentLoaded', function() {
             "class": "wind",
             "text": "Ветер",
             "recept": [["air", "air"]]
+        },
+        {
+            "id": 11,
+            "class": "steam",
+            "text": "Пар",
+            "recept": [["fire", "water"]]
+        },
+        {
+            "id": 12,
+            "class": "cloud",
+            "text": "Облако",
+            "recept": [["steam", "air"]]
+        },
+        {
+            "id": 13,
+            "class": "sky",
+            "text": "Небо",
+            "recept": [["cloud", "air"]]
+        },
+        {
+            "id": 14,
+            "class": "pressure",
+            "text": "Давление",
+            "recept": [["ground", "ground"]]
+        },
+        {
+            "id": 15,
+            "class": "energy",
+            "text": "Энергия",
+            "recept": [["air", "fire"]]
         }
     ];
 
@@ -82,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCounter();
     initSimpleBar();
     initCatalog();
+    initInfo();
 
     function initEvents() {
         dblClickCreateBaseElems();
@@ -98,9 +131,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function initInfo() {
+        var catalog = document.querySelector('.catalog');
+        var info = document.querySelector('.info');
+        var bg = document.querySelector('.bg');
+        var open = document.querySelector('.tool__info');
+        var close = document.querySelector('.info__close');
+
+        close.addEventListener('click', function() {
+            info.classList.remove('_opened');
+            bg.classList.remove('_show');
+        });
+        
+        open.addEventListener('click', function() {
+            catalog.classList.remove('_opened');
+            info.classList.add('_opened');
+            bg.classList.add('_show');
+        });
+    }
+
     function initCatalog() {
         var catalog = document.querySelector('.catalog');
-        var bg = document.querySelector('.catalog__bg');
+        var info = document.querySelector('.info');
+        var bg = document.querySelector('.bg');
         var open = document.querySelector('.tool__catalog');
         var container = document.querySelector('.catalog__content');
         var close = document.querySelector('.catalog__close');
@@ -116,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         open.addEventListener('click', function() {
             saves = JSON.parse(localStorage.getItem(LSName));
+            info.classList.remove('_opened');
             catalog.classList.add('_opened');
             bg.classList.add('_show');
 
@@ -221,9 +275,13 @@ document.addEventListener('DOMContentLoaded', function() {
             $('[data-name='+elem.class+']').draggable({
                 start: function(e, ui) {
                     $(trash).show();
+                    $(catalogTool).hide();
+                    $(infoTool).hide();
                 },
                 stop: function(e, ui) {
                     $(trash).hide();
+                    $(catalogTool).show();
+                    $(infoTool).show();
                 }
             });
             $('[data-name='+elem.class+']').droppable({
