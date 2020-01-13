@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             "id": 7,
-            "class": "meteor",
-            "text": "Метеорит",
+            "class": "energy",
+            "text": "Энергия",
             "recept": [["air", "fire"]]
         },
         {
@@ -100,12 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
             "class": "pressure",
             "text": "Давление",
             "recept": [["ground", "ground"]]
-        },
-        {
-            "id": 15,
-            "class": "energy",
-            "text": "Энергия",
-            "recept": [["air", "fire"]]
         }
     ];
 
