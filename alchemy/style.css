@@ -113,9 +113,11 @@ body {
   background-color: #fff;
   color: #000;
   width: 50%;
+  height: 80%;
   border-radius: 4px;
   -webkit-transition: .2s;
   transition: .2s;
+  overflow: scroll;
 }
 
 @media screen and (max-width: 768px) {
@@ -161,15 +163,8 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: 20px 0 0 0;
-  height: 60%;
+  padding: 20px 0;
   overflow-y: scroll;
-}
-
-@media screen and (max-width: 576px) {
-  .info__content {
-    height: 50%;
-  }
 }
 
 .info-mark {

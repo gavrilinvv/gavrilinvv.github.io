@@ -90,8 +90,10 @@ body {
     background-color: #fff;
     color: #000;
     width: 50%;
+    height: 80%;
     border-radius: 4px;
     transition: .2s;
+    overflow: scroll;
     @media screen and (max-width: 768px) {
         width: 80%;
     }
@@ -123,12 +125,8 @@ body {
     &__content {
         display: flex;
         flex-wrap: wrap;
-        padding: 20px 0 0 0;
-        height: 60%;
+        padding: 20px 0;
         overflow-y: scroll;
-        @media screen and (max-width: 576px) {
-            height: 50%;
-        }
     }
     &-mark {
         font-weight: 700;
