@@ -18,6 +18,9 @@
             <div class="catalog__container">
                 <div class="catalog__title">Каталог доступных элементов</div>
                 <div class="catalog__close">&times;</div>
+                <div class="catalog__search">
+                    <input type="text" placeholder="Найти">
+                </div>
                 <div class="catalog__content"></div>
                 <div class="catalog__controls">
                     <div class="catalog__btn">Добавить</div>
@@ -34,7 +37,8 @@
                     <p>Создавайте новые элементы комбинируя существующие друг с другом.</p><br>
                     <p>Чтобы удалить элемент, захватите его и перенесите в корзину в нижней части экрана.</p><br>
                     <p>Чтобы взять уже созданный элемент, выберите его из каталога доступных элементов.</p><br>
-                    <p>Чтобы скопировать элемент, кликните по нему два раза.</p>
+                    <p>Чтобы скопировать элемент, кликните по нему два раза.</p><br>
+                    <p>Символ <span class="info-mark">*</span> около элемента означает, что данный элемент конечный.</p>
                 </div>
             </div>
         </div>  
@@ -55,6 +59,7 @@
     <script src="js/jquery.ui.touch-punch.min.js"></script>
     <script src="js/hammer.min.js"></script>
     <script src="js/simplebar.min.js"></script>
+    <script src="js/elements.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

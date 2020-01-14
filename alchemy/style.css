@@ -172,6 +172,11 @@ body {
   }
 }
 
+.info-mark {
+  font-weight: 700;
+  color: #ce1718;
+}
+
 .catalog {
   opacity: 0;
   position: absolute;
@@ -182,7 +187,7 @@ body {
   background-color: #fff;
   color: #000;
   width: 50%;
-  height: 65%;
+  height: 90%;
   border-radius: 4px;
   -webkit-transition: .2s;
   transition: .2s;
@@ -190,7 +195,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .catalog {
-    width: 80%;
+    width: 90%;
   }
 }
 
@@ -279,10 +284,21 @@ body {
   transition: .2s;
 }
 
+.catalog__search {
+  margin: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.catalog__search input {
+  border: 0;
+  outline: 0;
+  padding: 5px;
+}
+
 .catalog-elem {
   width: 50px;
   height: 70px;
-  padding: 30px;
+  padding: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

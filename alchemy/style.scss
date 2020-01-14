@@ -130,6 +130,10 @@ body {
             height: 50%;
         }
     }
+    &-mark {
+        font-weight: 700;
+        color: #ce1718;
+    }
 }
 
 .catalog {
@@ -141,11 +145,11 @@ body {
     background-color: #fff;
     color: #000;
     width: 50%;
-    height: 65%;
+    height: 90%;
     border-radius: 4px;
     transition: .2s;
     @media screen and (max-width: 768px) {
-        width: 80%;
+        width: 90%;
     }
     &._opened {
         opacity: 1;
@@ -208,10 +212,19 @@ body {
             transition: .2s;
         }
     }
+    &__search {
+        margin: 10px 0;
+        border-bottom: 1px solid #ccc;
+        & input {
+            border: 0;
+            outline: 0;
+            padding: 5px;
+        }
+    }
     &-elem {
         width: 50px;
         height: 70px;
-        padding: 30px;
+        padding: 25px;
         display: flex;
         flex-direction: column;
         align-items: center;
