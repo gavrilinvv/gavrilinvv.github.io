@@ -11,97 +11,20 @@ document.addEventListener('DOMContentLoaded', function() {
     var counter = document.querySelector('.counter');
     var notice = document.querySelector('.notice');
     var area = document.querySelector('.area');
+
+    // tools
     var trash = document.querySelector('.tool__remove');
     var catalogTool = document.querySelector('.tool__catalog');
     var infoTool = document.querySelector('.tool__info');
+    var catalogClose = document.querySelector('.catalog__close');
+    var infoClose = document.querySelector('.info__close');
+    var catalogBlock = document.querySelector('.catalog');
+    var infoBlock = document.querySelector('.info');
+    var bg = document.querySelector('.bg');
+    var search = document.querySelector('.catalog__search input');
+
     var LSName = 'alData:openedElems';
     var scrollBar = '';
-    var elements = [
-        {
-            "id": 1,
-            "isBase": true,
-            "class": "fire",
-            "text": "Огонь"
-        },
-        {
-            "id": 2,
-            "isBase": true,
-            "class": "water",
-            "text": "Вода"
-        },
-        {
-            "id": 3,
-            "isBase": true,
-            "class": "air",
-            "text": "Воздух"
-        },
-        {
-            "id": 4,
-            "isBase": true,
-            "class": "ground",
-            "text": "Земля"
-        },
-        {
-            "id": 5,
-            "class": "volcano",
-            "text": "Вулкан",
-            "recept": [["fire", "ground"]]
-        },
-        {
-            "id": 6,
-            "class": "swamp",
-            "text": "Болото",
-            "recept": [["water", "ground"]]
-        },
-        {
-            "id": 7,
-            "class": "energy",
-            "text": "Энергия",
-            "recept": [["air", "fire"]]
-        },
-        {
-            "id": 8,
-            "class": "ferrum",
-            "text": "Железо",
-            "recept": [["meteor", "ground"]]
-        },
-        {
-            "id": 9,
-            "class": "sea",
-            "text": "Море",
-            "recept": [["salt", "water"],["water", "water"]]
-        },
-        {
-            "id": 10,
-            "class": "wind",
-            "text": "Ветер",
-            "recept": [["air", "air"]]
-        },
-        {
-            "id": 11,
-            "class": "steam",
-            "text": "Пар",
-            "recept": [["fire", "water"]]
-        },
-        {
-            "id": 12,
-            "class": "cloud",
-            "text": "Облако",
-            "recept": [["steam", "air"]]
-        },
-        {
-            "id": 13,
-            "class": "sky",
-            "text": "Небо",
-            "recept": [["cloud", "air"]]
-        },
-        {
-            "id": 14,
-            "class": "pressure",
-            "text": "Давление",
-            "recept": [["ground", "ground"]]
-        }
-    ];
 
     initLocalStorage();
     initEvents();
@@ -125,46 +48,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function initInfo() {
-        var catalog = document.querySelector('.catalog');
-        var info = document.querySelector('.info');
-        var bg = document.querySelector('.bg');
-        var open = document.querySelector('.tool__info');
-        var close = document.querySelector('.info__close');
+    function initSearch() {
+        //var items = $('.catalog-elem');
+        var items = document.querySelectorAll('.catalog-elem');
+        var name;
+        var val;
+        search.addEventListener('input', function() {
+            val = this.value.toLowerCase();
+            items.forEach(function(item) {
+                name = item.querySelector('.catalog-elem__txt').innerText.toLowerCase();
+                if(name.indexOf(val) == -1) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'flex';
+                }
+            })
+        })
+    }
 
-        close.addEventListener('click', function() {
-            info.classList.remove('_opened');
+    function initInfo() {
+        infoClose.addEventListener('click', function() {
+            infoBlock.classList.remove('_opened');
             bg.classList.remove('_show');
         });
         
-        open.addEventListener('click', function() {
-            catalog.classList.remove('_opened');
-            info.classList.add('_opened');
+        infoTool.addEventListener('click', function() {
+            catalogBlock.classList.remove('_opened');
+            infoBlock.classList.add('_opened');
             bg.classList.add('_show');
         });
     }
 
     function initCatalog() {
-        var catalog = document.querySelector('.catalog');
-        var info = document.querySelector('.info');
-        var bg = document.querySelector('.bg');
-        var open = document.querySelector('.tool__catalog');
         var container = document.querySelector('.catalog__content');
-        var close = document.querySelector('.catalog__close');
         var btnAdd = document.querySelector('.catalog__btn');
         var selectedElements = [];
-        var flatElementIds = [];
-        var index;
         var saves;
 
-        close.addEventListener('click', function() {
-            catalog.classList.remove('_opened');
+        catalogClose.addEventListener('click', function() {
+            catalogBlock.classList.remove('_opened');
             bg.classList.remove('_show');
         });
-        open.addEventListener('click', function() {
+        catalogTool.addEventListener('click', function() {
             saves = JSON.parse(localStorage.getItem(LSName));
-            info.classList.remove('_opened');
-            catalog.classList.add('_opened');
+            infoBlock.classList.remove('_opened');
+            catalogBlock.classList.add('_opened');
             bg.classList.add('_show');
 
             container.innerText = '';
@@ -172,12 +100,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 var element = _getElementByID(saves[i]);
                 container.appendChild(_createBoxElement(element));
             }
+        
+            // запускаем поиск по созданным элементам
+            initSearch();
         });
         
         btnAdd.addEventListener('click', function() {
             addElement(selectedElements);
             selectedElements = [];
-            catalog.classList.remove('_opened');
+            catalogBlock.classList.remove('_opened');
             bg.classList.remove('_show');
             // TODO сделать сброс выбранных элементов в каталоге
         })
