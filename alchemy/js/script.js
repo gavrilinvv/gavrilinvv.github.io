@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function initSearch() {
-        //var items = $('.catalog-elem');
         var items = document.querySelectorAll('.catalog-elem');
         var name;
         var val;
@@ -326,8 +325,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     // если элементы одинаковые и оба элемента есть и на 1 и на 2 месте рецепта
                     (elemA == elemB && recept[0] == elemA && recept[1] == elemB ))
                     ) {
-                    msg = createNoticeNewElem(a, b, elem); // генерируем сообщение (элемент1 + элемент2 = элемент3)
-                    newNotice(msg); // выводим уведомление
+
+                    var saves = JSON.parse(localStorage.getItem(LSName));
+                    if(saves.indexOf(elem.id) == -1) {
+                        msg = createNoticeNewElem(a, b, elem); // генерируем сообщение (элемент1 + элемент2 = элемент3)
+                        newNotice(msg); // выводим уведомление
+                    }
     
                     addElement(elem, coords); // добавляем элемент на страницу в соответствующем месте
     
@@ -361,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initLocalStorage() {
         if(localStorage.getItem(LSName)) {
-            checkToOldElements();
+            filterToOldElements();
 
             // сделать загрузку открытых элементов
         } else {
@@ -371,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // проверка на наличие недействительных элементов в сохранениях по отношению к актуальному массиву элементов
-    function checkToOldElements() {
+    function filterToOldElements() {
         var saves = JSON.parse(localStorage.getItem(LSName)),
             flatElementIds = [],
             save,

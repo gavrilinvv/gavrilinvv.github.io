@@ -25,8 +25,8 @@ var elements = [
     },
     {
         "id": 5,
-        "class": "volcano",
-        "text": "Вулкан",
+        "class": "lava",
+        "text": "Лава",
         "recept": [["fire", "ground"]]
     },
     {
@@ -88,5 +88,17 @@ var elements = [
         "class": "rain",
         "text": "Дождь",
         "recept": [["cloud", "water"]]
+    },
+    {
+        "id": 16,
+        "class": "volkano",
+        "text": "Вулкан",
+        "recept": [["pressure", "lava"]]
+    },
+    {
+        "id": 17,
+        "class": "stone",
+        "text": "Камень",
+        "recept": [["water", "lava"]]
     }
 ];
