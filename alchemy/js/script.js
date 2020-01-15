@@ -103,6 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 var element = _getElementByID(saves[i]);
                 container.appendChild(_createBoxElement(element));
             }
+
+            // сортировка по алфавиту
+            _sortCatalogElems();
         
             // запускаем поиск по созданным элементам
             initSearch();
@@ -115,6 +118,28 @@ document.addEventListener('DOMContentLoaded', function() {
             bg.classList.remove('_show');
             // TODO сделать сброс выбранных элементов в каталоге
         })
+
+        function _sortCatalogElems() {
+            var elems = document.querySelectorAll('.catalog-elem');
+            var container = document.querySelector('.catalog__content');
+            elems = [...elems];
+            elems.sort(function(a, b) {
+                a = a.querySelector('.catalog-elem__txt').innerText;
+                b = b.querySelector('.catalog-elem__txt').innerText;
+
+                if (a > b) {
+                    return 1;
+                }
+                if (a < b) {
+                    return -1;
+                }
+                return 0;
+            });
+            elems.forEach(function(elem) {
+                container.appendChild(elem);
+            })
+            
+        }
 
         function _createBoxElement(elem) {
             var box = document.createElement('div');
