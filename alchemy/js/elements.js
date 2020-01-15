@@ -91,7 +91,7 @@ var elements = [
     },
     {
         "id": 16,
-        "class": "volkano",
+        "class": "volcano",
         "text": "Вулкан",
         "recept": [["pressure", "lava"]]
     },
@@ -104,19 +104,75 @@ var elements = [
     {
         "id": 18,
         "class": "geyser",
-        "text": " Гейзер",
+        "text": "Гейзер",
         "recept": [["ground", "steam"]]
     },
     {
         "id": 19,
         "class": "metal",
-        "text": " Металл",
+        "text": "Металл",
         "recept": [["fire", "stone"]]
     },
     {
         "id": 20,
         "class": "sand",
-        "text": " Песок",
+        "text": "Песок",
         "recept": [["stone", "air"]]
+    },
+    {
+        "id": 21,
+        "class": "clay",
+        "text": "Глина",
+        "recept": [["sand", "swamp"]]
+    },
+    {
+        "id": 22,
+        "class": "Silicon",
+        "text": "Кремний",
+        "recept": [["sand", "pressure"]]
+    },
+    {
+        "id": 23,
+        "class": "desert",
+        "text": "Пустыня",
+        "recept": [["sand", "sand"]]
+    },
+    {
+        "id": 24,
+        "class": "glass",
+        "text": "Стекло",
+        "recept": [["sand", "fire"]]
+    },
+    {
+        "id": 25,
+        "class": "hourglass",
+        "text": "Песочные часы",
+        "recept": [["sand", "glass"]]
+    },
+    {
+        "id": 26,
+        "class": "life",
+        "text": "Жизнь",
+        "recept": [["swamp", "energy"]]
+    },
+    {
+        "id": 27,
+        "class": "egg",
+        "text": "Яйцо",
+        "recept": [["life", "stone"]]
+    },
+    {
+        "id": 28,
+        "class": "dust",
+        "text": "Пыль",
+        "recept": [["air", "ground"]]
+    },
+    {
+        "id": 29,
+        "class": "turtle",
+        "text": "Черепаха",
+        "recept": [["egg", "life"]]
     }
+
+    
 ];
