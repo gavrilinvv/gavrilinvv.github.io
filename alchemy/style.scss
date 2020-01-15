@@ -93,7 +93,7 @@ body {
     height: 80%;
     border-radius: 4px;
     transition: .2s;
-    overflow: scroll;
+    overflow-y: scroll;
     @media screen and (max-width: 768px) {
         width: 80%;
     }
@@ -126,7 +126,6 @@ body {
         display: flex;
         flex-wrap: wrap;
         padding: 20px 0;
-        overflow-y: scroll;
     }
     &-mark {
         font-weight: 700;
