@@ -121,9 +121,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function _sortCatalogElems() {
             var elems = document.querySelectorAll('.catalog-elem');
+            var elemsArray = Array.prototype.slice.call(elems, 0);
             var container = document.querySelector('.catalog__content');
-            elems = [...elems];
-            elems.sort(function(a, b) {
+            elemsArray.sort(function(a, b) {
                 a = a.querySelector('.catalog-elem__txt').innerText;
                 b = b.querySelector('.catalog-elem__txt').innerText;
 
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 return 0;
             });
-            elems.forEach(function(elem) {
+            elemsArray.forEach(function(elem) {
                 container.appendChild(elem);
             })
             
