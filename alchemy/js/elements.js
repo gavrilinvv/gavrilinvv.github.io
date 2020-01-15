@@ -100,5 +100,23 @@ var elements = [
         "class": "stone",
         "text": "Камень",
         "recept": [["water", "lava"]]
+    },
+    {
+        "id": 18,
+        "class": "geyser",
+        "text": " Гейзер",
+        "recept": [["ground", "steam"]]
+    },
+    {
+        "id": 19,
+        "class": "metal",
+        "text": " Металл",
+        "recept": [["fire", "stone"]]
+    },
+    {
+        "id": 20,
+        "class": "sand",
+        "text": " Песок",
+        "recept": [["stone", "air"]]
     }
 ];
