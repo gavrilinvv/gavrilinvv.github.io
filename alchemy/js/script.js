@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var LSName = 'alData:openedElems';
     var scrollBar = '';
+    
+    if(findGetParameter('dev')) {
+        localStorage.setItem(LSName, JSON.stringify( flattingElementIds([]) ));
+    }
 
     initLocalStorage();
     initEvents();
@@ -461,5 +465,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initSimpleBar() {
         scrollBar = new SimpleBar(document.querySelector('.tools__section'), { autoHide: false });
+    }
+
+    function findGetParameter(parameterName) {
+        var result = null,
+            tmp = [];
+        location.search
+            .substr(1)
+            .split("&")
+            .forEach(function (item) {
+              tmp = item.split("=");
+              if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+            });
+        return result;
     }
 })
