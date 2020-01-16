@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initCatalog() {
         var container = document.querySelector('.catalog__content');
-        var btnAdd = document.querySelector('.catalog__btn');
+        var btnAdd = document.querySelector('.catalog__btn-add');
+        var btnInfo = document.querySelector('.catalog__btn-info');
         var selectedElements = [];
         var saves;
 
@@ -119,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // TODO сделать сброс выбранных элементов в каталоге
         })
 
+        // сортировка по алфавиту
         function _sortCatalogElems() {
             var elems = document.querySelectorAll('.catalog-elem');
             var elemsArray = Array.prototype.slice.call(elems, 0);
@@ -152,6 +154,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var title = document.createElement('p');
             title.classList.add('catalog-elem__txt');
+            if(elem.text.length > 10) {
+                title.style.fontSize = '12px';
+            }
             if(isLastElem(elem)) {
                 title.classList.add('catalog-elem__txt-final');
             }
@@ -170,6 +175,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     this.classList.remove('_selected');
                     selectedElements = _updateSelectedCatalog(this, selectedElements, 'del');
+                }
+
+                //если выбран 1 элемент (не более), то показываем кнопку.
+                btnInfo.style.display = 'none';
+                if (selectedElements.length == 1) {
+                    btnInfo.style.display = 'inline-block';
                 }
             })
 
@@ -238,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             $('[data-name='+elem.class+']').droppable({
+                //greedy: true,
                 drop: function(e, ui) {
                     checkNewElement(e.target, ui.draggable[0], {x: e.pageX, y: e.pageY})
                 }
