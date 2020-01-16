@@ -117,7 +117,7 @@ body {
   border-radius: 4px;
   -webkit-transition: .2s;
   transition: .2s;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 @media screen and (max-width: 768px) {
@@ -164,7 +164,6 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding: 20px 0;
-  overflow-y: scroll;
 }
 
 .info-mark {
@@ -248,7 +247,7 @@ body {
   width: 100%;
 }
 
-.catalog__btn {
+.catalog__btn-add {
   display: inline-block;
   font-size: 24px;
   font-weight: 500;
@@ -262,18 +261,49 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .catalog__btn {
+  .catalog__btn-add {
     font-size: 18px;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .catalog__btn {
+  .catalog__btn-add {
     padding: 5px 10px;
   }
 }
 
-.catalog__btn:hover {
+.catalog__btn-add:hover {
+  background-color: #d18800;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.catalog__btn-info {
+  display: none;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #fff;
+  background-color: orange;
+  border-radius: 4px;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+@media screen and (max-width: 768px) {
+  .catalog__btn-info {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .catalog__btn-info {
+    padding: 5px 10px;
+  }
+}
+
+.catalog__btn-info:hover {
   background-color: #d18800;
   -webkit-transition: .2s;
   transition: .2s;
