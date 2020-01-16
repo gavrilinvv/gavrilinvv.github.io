@@ -43,9 +43,9 @@ var elements = [
     },
     {
         "id": 8,
-        "class": "ferrum",
-        "text": "Железо",
-        "recept": [["meteor", "ground"]]
+        "class": "electricity",
+        "text": "Электричество",
+        "recept": [["metal", "energy"]]
     },
     {
         "id": 9,
@@ -172,7 +172,83 @@ var elements = [
         "class": "turtle",
         "text": "Черепаха",
         "recept": [["egg", "life"]]
+    },
+    {
+        "id": 30,
+        "class": "lightbulb",
+        "text": "Лампочка",
+        "recept": [["electricity", "glass"]]
+    },
+    {
+        "id": 31,
+        "class": "magnet",
+        "text": "Магнит",
+        "recept": [["electricity", "metal"]]
+    },
+    {
+        "id": 32,
+        "class": "bacteria",
+        "text": "Бактерия",
+        "recept": [["swamp", "life"]]
+    },
+    {
+        "id": 33,
+        "class": "worm",
+        "text": "Червь",
+        "recept": [["bacteria", "ground"]]
+    },
+    {
+        "id": 34,
+        "class": "sulfur",
+        "text": "Сера",
+        "recept": [["bacteria", "swamp"]]
+    },
+    {
+        "id": 35,
+        "class": "flu",
+        "text": "Грипп",
+        "recept": [["bacteria", "air"]]
+    },
+    {
+        "id": 36,
+        "class": "butterfly",
+        "text": "Бабочка",
+        "recept": [["worm", "air"]]
+    },
+    {
+        "id": 37,
+        "class": "omlet",
+        "text": "Яичница",
+        "recept": [["egg", "fire"]]
+    },
+    {
+        "id": 38,
+        "class": "brick",
+        "text": "Кирпич",
+        "recept": [["fire", "clay"]]
+    },
+    {
+        "id": 39,
+        "class": "mite",
+        "text": "Клещ",
+        "recept": [["life", "dust"]]
+    },
+    {
+        "id": 40,
+        "class": "cold",
+        "text": "Холод",
+        "recept": [["cloud", "wind"]]
+    },
+    {
+        "id": 41,
+        "class": "ice",
+        "text": "Лёд",
+        "recept": [["cold", "water"]]
     }
+
+    
+
+    
 
     
 ];
