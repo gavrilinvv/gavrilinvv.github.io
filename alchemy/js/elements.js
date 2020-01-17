@@ -275,6 +275,12 @@ var elements = [
         "class": "forest",
         "text": "Лес",
         "recept": [["tree", "tree"]]
+    },
+    {
+        "id": 47,
+        "class": "coal",
+        "text": "Уголь",
+        "recept": [["tree", "fire"]]
     }
 
     
