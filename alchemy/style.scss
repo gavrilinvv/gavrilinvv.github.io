@@ -179,10 +179,10 @@ body {
         display: flex;
         flex-wrap: wrap;
         padding: 20px 0 0 0;
-        height: 60%;
+        height: 65%;
         overflow-y: scroll;
         @media screen and (max-width: 576px) {
-            height: 50%;
+            height: 70%;
         }
     }
     &__controls {

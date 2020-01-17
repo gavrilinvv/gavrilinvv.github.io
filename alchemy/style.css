@@ -231,13 +231,13 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding: 20px 0 0 0;
-  height: 60%;
+  height: 65%;
   overflow-y: scroll;
 }
 
 @media screen and (max-width: 576px) {
   .catalog__content {
-    height: 50%;
+    height: 70%;
   }
 }
 
