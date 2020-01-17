@@ -336,6 +336,18 @@ var elements = [
         "text": "Апельсин",
         "recept": [["tree", "sun"]]
     },
+    {
+        "id": 57,
+        "class": "bird",
+        "text": "Птица",
+        "recept": [["life", "sky"]]
+    },
+    {
+        "id": 58,
+        "class": "airplane",
+        "text": "Самолет",
+        "recept": [["bird", "metal"]]
+    },
 
     
 
