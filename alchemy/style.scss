@@ -202,10 +202,10 @@ body {
     &__controls {
         // position: absolute;
         // bottom: 20px;
-        padding: 20px 0 0 0;
+        padding: 20px 0 20px 0;
         width: calc(100% - 20px);
         position: fixed;
-        bottom: 20px;
+        bottom: 0;
         display: block;
         background-color: $darkColor;
     }
