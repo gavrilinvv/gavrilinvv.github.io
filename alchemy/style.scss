@@ -203,7 +203,7 @@ body {
         // position: absolute;
         // bottom: 20px;
         padding: 20px 0 0 0;
-        width: 80%;
+        width: calc(100% - 20px);
         position: fixed;
         bottom: 20px;
         display: block;
