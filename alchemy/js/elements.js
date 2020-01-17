@@ -9,7 +9,8 @@ var elements = [
         "id": 2,
         "isBase": true,
         "class": "water",
-        "text": "Вода"
+        "text": "Вода",
+        "recept": [["ice", "fire"]]
     },
     {
         "id": 3,
@@ -250,7 +251,33 @@ var elements = [
         "class": "oasis",
         "text": "Оазис",
         "recept": [["desert", "water"]]
+    },
+    {
+        "id": 43,
+        "class": "seeds",
+        "text": "Семена",
+        "recept": [["ground", "life"]]
+    },
+    {
+        "id": 44,
+        "class": "tree",
+        "text": "Дерево",
+        "recept": [["ground", "seeds"]]
+    },
+    {
+        "id": 45,
+        "class": "flower",
+        "text": "Цветок",
+        "recept": [["water", "seeds"]]
+    },
+    {
+        "id": 46,
+        "class": "forest",
+        "text": "Лес",
+        "recept": [["tree", "tree"]]
     }
+
+    
 
     
 
