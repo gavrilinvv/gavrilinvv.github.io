@@ -83,7 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function initCatalog() {
-        var container = document.querySelector('.catalog__content');
+        var containerElems = document.querySelector('.catalog__elems');
+        var info = document.querySelector('.catalog__info');
         var btnAdd = document.querySelector('.catalog__btn-add');
         var btnInfo = document.querySelector('.catalog__btn-info');
         var selectedElements = [];
@@ -99,10 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
             catalogBlock.classList.add('_opened');
             bg.classList.add('_show');
 
-            container.innerText = '';
+            containerElems.innerText = '';
             for(var i = 0; i < saves.length; i++) {
                 var element = _getElementByID(saves[i]);
-                container.appendChild(_createBoxElement(element));
+                containerElems.appendChild(_createBoxElement(element));
             }
 
             // сортировка по алфавиту
@@ -120,11 +121,27 @@ document.addEventListener('DOMContentLoaded', function() {
             // TODO сделать сброс выбранных элементов в каталоге
         })
 
+        // TODO сделать вывод рецептов по элементу
+        // btnInfo.addEventListener('click', function() {
+        //     var targetElem = selectedElements[0];
+        //     var targetRecept = '';
+        //     var save;
+        //     var text;
+        //     elems.style.display = 'none';
+        //     info.style.display = 'block';
+
+        //     for(var i = 0; i < saves.length; i++) {
+        //         save = _getElementByID(saves[i]);
+        //         text = _getElemByClass(save.class).text;
+        //         console.log(text);
+        //     }
+        // })
+
         // сортировка по алфавиту
         function _sortCatalogElems() {
             var elems = document.querySelectorAll('.catalog-elem');
             var elemsArray = Array.prototype.slice.call(elems, 0);
-            var container = document.querySelector('.catalog__content');
+            var containerElems = document.querySelector('.catalog__elems');
             elemsArray.sort(function(a, b) {
                 a = a.querySelector('.catalog-elem__txt').innerText;
                 b = b.querySelector('.catalog-elem__txt').innerText;
@@ -138,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return 0;
             });
             elemsArray.forEach(function(elem) {
-                container.appendChild(elem);
+                containerElems.appendChild(elem);
             })
             
         }
@@ -441,6 +458,17 @@ document.addEventListener('DOMContentLoaded', function() {
             arr.push(element.id);
         });
         return arr;
+    }
+
+    // получение элемента по классу
+    function _getElemByClass(className) {
+        var element;
+        for(var j = 0; j < elements.length; j++) {
+            element = elements[j];
+            if(element.class === className) {
+                return element;
+            }
+        }
     }
 
     // получение элемента по ID
