@@ -201,8 +201,8 @@ body {
 }
 
 .catalog__container {
-  margin: 20px;
-  height: 92%;
+  padding: 20px;
+  height: 85%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -214,7 +214,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .catalog__container {
-    margin: 15px;
+    padding: 15px;
   }
 }
 
@@ -266,6 +266,7 @@ body {
 }
 
 .catalog__controls {
+  margin: 20px 0 0 0;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;

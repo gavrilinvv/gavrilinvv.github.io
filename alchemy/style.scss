@@ -159,12 +159,12 @@ body {
     }  
 
     &__container {
-        margin: 20px;
-        height: 92%;
+        padding: 20px;
+        height: 85%;
         display: flex;
         flex-direction: column;
         @media screen and (max-width: 768px) {
-            margin: 15px;
+            padding: 15px;
         }
     }
     &__title {
@@ -202,7 +202,7 @@ body {
     &__controls {
         // position: absolute;
         // bottom: 20px;
-        //margin: 20px 0 0 0;
+        margin: 20px 0 0 0;
         width: 100%;
         display: flex;
         justify-content: space-between;
