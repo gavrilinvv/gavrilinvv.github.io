@@ -310,7 +310,7 @@ var elements = [
         "id": 52,
         "class": "rainbow",
         "text": "Радуга",
-        "recept": [["light", "rain"]]
+        "recept": [["light", "rain"]] // может sun и rain?
     },
     {
         "id": 53,
@@ -370,7 +370,7 @@ var elements = [
         "id": 62,
         "class": "tractor",
         "text": "Трактор",
-        "recept": [["steam_boiler", "ground"]]
+        "recept": [["steam_engine", "ground"]]
     },
     {
         "id": 63,
