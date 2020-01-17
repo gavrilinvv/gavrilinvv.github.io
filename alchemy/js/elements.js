@@ -384,6 +384,12 @@ var elements = [
         "text": "Океан",
         "recept": [["sea", "sea"]]
     },
+    {
+        "id": 65,
+        "class": "cactus",
+        "text": "Кактус",
+        "recept": [["desert", "tree"]]
+    },
 
     
 
