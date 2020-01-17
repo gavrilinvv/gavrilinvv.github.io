@@ -348,6 +348,42 @@ var elements = [
         "text": "Самолет",
         "recept": [["bird", "metal"]]
     },
+    {
+        "id": 59,
+        "class": "pinguin",
+        "text": "Пингвин",
+        "recept": [["bird", "ice"]]
+    },
+    {
+        "id": 60,
+        "class": "steam_boiler",
+        "text": "Паровой котел",
+        "recept": [["steam", "metal"]]
+    },
+    {
+        "id": 61,
+        "class": "steam_engine",
+        "text": "Паровой двигатель",
+        "recept": [["steam_boiler", "coal"]]
+    },
+    {
+        "id": 62,
+        "class": "tractor",
+        "text": "Трактор",
+        "recept": [["steam_boiler", "ground"]]
+    },
+    {
+        "id": 63,
+        "class": "salt",
+        "text": "Соль",
+        "recept": [["sea", "fire"]]
+    },
+    {
+        "id": 64,
+        "class": "ocean",
+        "text": "Океан",
+        "recept": [["sea", "sea"]]
+    },
 
     
 
