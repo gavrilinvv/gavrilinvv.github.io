@@ -117,7 +117,7 @@ var elements = [
         "id": 20,
         "class": "sand",
         "text": "Песок",
-        "recept": [["stone", "air"]]
+        "recept": [["stone", "wind"], ["stone", "water"]]
     },
     {
         "id": 21,
@@ -244,6 +244,12 @@ var elements = [
         "class": "ice",
         "text": "Лёд",
         "recept": [["cold", "water"]]
+    },
+    {
+        "id": 42,
+        "class": "oasis",
+        "text": "Оазис",
+        "recept": [["desert", "water"]]
     }
 
     
