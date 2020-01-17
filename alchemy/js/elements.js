@@ -390,6 +390,18 @@ var elements = [
         "text": "Кактус",
         "recept": [["desert", "tree"]]
     },
+    {
+        "id": 66,
+        "class": "dino",
+        "text": "Динозавр",
+        "recept": [["egg", "ground"]]
+    },
+    {
+        "id": 67,
+        "class": "dragon",
+        "text": "Дракон",
+        "recept": [["dino", "fire"]]
+    },
 
     
 
