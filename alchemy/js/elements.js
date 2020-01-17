@@ -293,7 +293,49 @@ var elements = [
         "class": "snow",
         "text": "Снегопад",
         "recept": [["cold", "rain"]]
-    }
+    },
+    {
+        "id": 50,
+        "class": "cast_iron",
+        "text": "Чугун",
+        "recept": [["coal", "metal"]]
+    },
+    {
+        "id": 51,
+        "class": "light",
+        "text": "Свет",
+        "recept": [["electricity", "lightbulb"]]
+    },
+    {
+        "id": 52,
+        "class": "rainbow",
+        "text": "Радуга",
+        "recept": [["light", "rain"]]
+    },
+    {
+        "id": 53,
+        "class": "oxygen",
+        "text": "Кислород",
+        "recept": [["flower", "light"]]
+    },
+    {
+        "id": 54,
+        "class": "star",
+        "text": "Звезда",
+        "recept": [["energy", "light"]]
+    },
+    {
+        "id": 55,
+        "class": "sun",
+        "text": "Солнце",
+        "recept": [["star", "fire"]]
+    },
+    {
+        "id": 56,
+        "class": "orange",
+        "text": "Апельсин",
+        "recept": [["tree", "sun"]]
+    },
 
     
 
