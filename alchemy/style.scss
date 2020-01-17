@@ -160,7 +160,7 @@ body {
 
     &__container {
         padding: 20px;
-        height: 85%;
+        height: 92%;
         display: flex;
         flex-direction: column;
         @media screen and (max-width: 768px) {
@@ -185,7 +185,7 @@ body {
         cursor: pointer;
     }
     &__content {
-        overflow: hidden;
+        overflow: overlay;
         display: flex;
         flex-direction: column;
     }
