@@ -1,3 +1,5 @@
+$darkColor: #282941;
+
 * {
     font-family: sans-serif;
     padding: 0;
@@ -87,8 +89,8 @@ body {
     top: 200%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    color: #000;
+    background-color: $darkColor;
+    color: #fff;
     width: 50%;
     height: 80%;
     border-radius: 4px;
@@ -139,8 +141,8 @@ body {
     top: 200%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    color: #000;
+    background-color: $darkColor;
+    color: #fff;
     width: 50%;
     height: 90%;
     border-radius: 4px;
@@ -232,11 +234,14 @@ body {
     }
     &__search {
         margin: 10px 0;
-        border-bottom: 1px solid #ccc;
         & input {
             border: 0;
             outline: 0;
-            padding: 5px;
+            color: #fff;
+            padding: 5px 0 0 5px;
+            font-size: 18px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.2);
         }
     }
     &-elem {
@@ -311,7 +316,7 @@ body {
     height: 15%;
     box-sizing: border-box;
     border-top: 1px solid #2d85af;
-    background-color: #282941;
+    background-color: $darkColor;
     position: fixed;
     bottom: 0;
     overflow: hidden;
