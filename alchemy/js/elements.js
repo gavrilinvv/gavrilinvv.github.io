@@ -281,6 +281,18 @@ var elements = [
         "class": "coal",
         "text": "Уголь",
         "recept": [["tree", "fire"]]
+    },
+    {
+        "id": 48,
+        "class": "diamond",
+        "text": "Алмаз",
+        "recept": [["coal", "pressure"]]
+    },
+    {
+        "id": 49,
+        "class": "snow",
+        "text": "Снегопад",
+        "recept": [["cold", "rain"]]
     }
 
     
