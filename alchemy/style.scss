@@ -1,4 +1,5 @@
 $darkColor: #282941;
+$borderColor:#2d85af;
 
 * {
     font-family: sans-serif;
@@ -142,6 +143,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: $darkColor;
+    border: 1px solid $borderColor;
     color: #fff;
     width: 50%;
     height: 90%;
@@ -158,13 +160,20 @@ body {
 
     &__container {
         padding: 20px;
-        height: 100%;
+        height: 92%;
+        display: flex;
+        flex-direction: column;
+        @media screen and (max-width: 768px) {
+            padding: 15px;
+        }
     }
     &__title {
         font-size: 28px;
         text-align: center;
         @media screen and (max-width: 768px) {
             font-size: 18px;
+            margin: 0 auto;
+            width: 90%;
         }
     }
     &__close {
@@ -176,19 +185,27 @@ body {
         cursor: pointer;
     }
     &__content {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+    &__elems {
         display: flex;
         flex-wrap: wrap;
         padding: 20px 0 0 0;
-        height: 65%;
+        //height: 55%;
         overflow-y: scroll;
-        @media screen and (max-width: 576px) {
-            height: 70%;
-        }
+    }
+    &__info {
+        display: none;
     }
     &__controls {
-        position: absolute;
-        bottom: 20px;
+        // position: absolute;
+        // bottom: 20px;
+        margin: 20px 0 0 0;
         width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
     &__btn-add {
         display: inline-block;
@@ -315,7 +332,7 @@ body {
     width: 100%;
     height: 15%;
     box-sizing: border-box;
-    border-top: 1px solid #2d85af;
+    border-top: 1px solid $borderColor;
     background-color: $darkColor;
     position: fixed;
     bottom: 0;
@@ -324,7 +341,7 @@ body {
     z-index: -1;
     &__section:nth-child(1) {
         width: 50%;
-        border-right: 1px solid #2d85af;
+        border-right: 1px solid $borderColor;
         cursor: default;
     }
     &__section:nth-child(2) {
