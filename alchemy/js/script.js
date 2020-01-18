@@ -100,6 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
         catalogClose.addEventListener('click', function() {
             catalogBlock.classList.remove('_opened');
             bg.classList.remove('_show');
+            btnInfo.style.display = 'none';
+            containerElems.style.display = 'flex';
+            search.style.display = 'block';
+            catalogInfo.style.display = 'none';
+            selectedElements = [];
         });
         catalogTool.addEventListener('click', function() {
             saves = JSON.parse(localStorage.getItem(LSName));
