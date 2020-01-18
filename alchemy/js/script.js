@@ -17,13 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
     var trash = document.querySelector('.tool__remove');
     var catalogTool = document.querySelector('.tool__catalog');
     var infoTool = document.querySelector('.tool__info');
-    var catalogClose = document.querySelector('.catalog__close');
+    
+    // общая информация
     var infoClose = document.querySelector('.info__close');
-    var catalogBlock = document.querySelector('.catalog');
     var infoBlock = document.querySelector('.info');
-    var bg = document.querySelector('.bg');
-    var search = document.querySelector('.catalog__search input');
 
+    // каталог
+    var catalogBlock = document.querySelector('.catalog');
+    var catalogClose = document.querySelector('.catalog__close');
+    var search = document.querySelector('.catalog__search input');
+    var catalogInfo = document.querySelector('.catalog__info');
+    var catalogInfoBack = document.querySelector('.catalog__info-back');
+    var catalogInfoTitle = document.querySelector('.catalog__info-title');
+    var btnAdd = document.querySelector('.catalog__btn-add');
+    var btnInfo = document.querySelector('.catalog__btn-info');
+
+    var bg = document.querySelector('.bg');
     var LSName = 'alData:openedElems';
     var scrollBar = '';
     
@@ -85,9 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initCatalog() {
         var containerElems = document.querySelector('.catalog__elems');
-        var info = document.querySelector('.catalog__info');
-        var btnAdd = document.querySelector('.catalog__btn-add');
-        var btnInfo = document.querySelector('.catalog__btn-info');
         var selectedElements = [];
         var saves;
 
@@ -119,24 +125,35 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedElements = [];
             catalogBlock.classList.remove('_opened');
             bg.classList.remove('_show');
+            btnInfo.style.display = 'none';
             // TODO сделать сброс выбранных элементов в каталоге
         })
 
         // TODO сделать вывод рецептов по элементу
-        // btnInfo.addEventListener('click', function() {
-        //     var targetElem = selectedElements[0];
-        //     var targetRecept = '';
-        //     var save;
-        //     var text;
-        //     elems.style.display = 'none';
-        //     info.style.display = 'block';
+        btnInfo.addEventListener('click', function() {
+            var targetElem = _getElementByID(selectedElements[0].id); // объект выбранного элемента
+            var targetRecept = '';
+            var save;
+            var text;
+            containerElems.style.display = 'none';
+            search.style.display = 'none';
+            catalogInfo.style.display = 'block';
 
-        //     for(var i = 0; i < saves.length; i++) {
-        //         save = _getElementByID(saves[i]);
-        //         text = _getElemByClass(save.class).text;
-        //         console.log(text);
-        //     }
-        // })
+            catalogInfoTitle.innerText = targetElem.text;
+            catalogInfo.appendChild(catalogInfoTitle);
+
+            // for(var i = 0; i < saves.length; i++) {
+            //     save = _getElementByID(saves[i]);
+            //     text = _getElemByClass(save.class).text;
+            //     console.log(text);
+            // }
+        })
+
+        catalogInfoBack.addEventListener('click', function() {
+            containerElems.style.display = 'flex';
+            search.style.display = 'block';
+            catalogInfo.style.display = 'none';
+        })
 
         // сортировка по алфавиту
         function _sortCatalogElems() {
