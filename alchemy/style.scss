@@ -200,7 +200,8 @@ body {
         display: -ms-flexbox;
         display: flex;
         flex-wrap: wrap;
-        padding: 20px 0 60px 0;
+        padding: 20px 0 0 0;
+        margin: 0 0 60px 0;
         overflow-y: scroll;
     }
     &__info {
