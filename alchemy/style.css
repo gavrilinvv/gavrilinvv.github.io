@@ -266,6 +266,17 @@ body {
   display: none;
 }
 
+.catalog__info-title {
+  display: inline-block;
+}
+
+.catalog__info-back {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 28px;
+  margin: 0 20px 0 0;
+}
+
 .catalog__controls {
   padding: 20px 0 20px 0;
   width: calc(100% - 20px);
