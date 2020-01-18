@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    alert('hello salatik!');
     var mc = new Hammer.Manager(document);
     mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
     mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan')]);        
@@ -255,6 +257,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             $('[data-name='+elem.class+']').draggable({
                 start: function(e, ui) {
+                    // текущий элемент становится выше остальных
+                    $('.element').css({zIndex: 1});
+                    e.target.style.zIndex = 2;
+
                     $(trash).show();
                     $(catalogTool).hide();
                     $(infoTool).hide();
