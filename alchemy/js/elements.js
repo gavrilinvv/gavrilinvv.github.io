@@ -402,6 +402,18 @@ var elements = [
         "text": "Дракон",
         "recept": [["dino", "fire"]]
     },
+    {
+        "id": 68,
+        "class": "parrot",
+        "text": "Попугай",
+        "recept": [["bird", "rainbow"]]
+    },
+    {
+        "id": 69,
+        "class": "hummingbird",
+        "text": "Колибри",
+        "recept": [["bird", "flower"]]
+    },
 
     
 
