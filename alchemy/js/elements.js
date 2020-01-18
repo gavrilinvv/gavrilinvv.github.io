@@ -414,6 +414,12 @@ var elements = [
         "text": "Колибри",
         "recept": [["bird", "flower"]]
     },
+    {
+        "id": 70,
+        "class": "sunflower",
+        "text": "Подсолнух",
+        "recept": [["sun", "flower"]]
+    },
 
     
 
