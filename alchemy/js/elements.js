@@ -426,6 +426,12 @@ var elements = [
         "text": "Грязь",
         "recept": [["dust", "rain"],["dust", "water"]]
     },
+    {
+        "id": 72,
+        "class": "pheonix",
+        "text": "Феникс",
+        "recept": [["fire", "bird"]]
+    },
 
     
 ];
