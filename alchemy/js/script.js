@@ -222,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (selectedElements.length == 1) {
                     btnInfo.style.display = 'inline-block';
                 }
+                console.log(selectedElements);
             })
 
             box.appendChild(img);
@@ -244,7 +245,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 arr.push(_getElementByID(id));
             }
             if(action == 'del') {
-                index = arr.indexOf(id);
+                for(var i = 0; i < arr.length; i++) {
+                    if(arr[i].id == id) {
+                        index = i;
+                    }
+                };
                 arr.splice(index, 1);
             }
             return arr;

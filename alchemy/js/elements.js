@@ -420,12 +420,12 @@ var elements = [
         "text": "Подсолнух",
         "recept": [["sun", "flower"]]
     },
-
-    
-
-    
-
-    
+    {
+        "id": 71,
+        "class": "mud",
+        "text": "Грязь",
+        "recept": [["dust", "rain"],["dust", "water"]]
+    },
 
     
 ];
