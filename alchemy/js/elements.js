@@ -128,7 +128,7 @@ var elements = [
     },
     {
         "id": 22,
-        "class": "Silicon",
+        "class": "silicon",
         "text": "Кремний",
         "recept": [["sand", "pressure"]]
     },
