@@ -294,12 +294,14 @@ var elements = [
         "text": "Снегопад",
         "recept": [["cold", "rain"]]
     },
-    {
-        "id": 50,
-        "class": "cast_iron",
-        "text": "Чугун",
-        "recept": [["coal", "metal"]]
-    },
+
+
+
+
+
+
+
+    
     {
         "id": 51,
         "class": "light",
@@ -310,7 +312,7 @@ var elements = [
         "id": 52,
         "class": "rainbow",
         "text": "Радуга",
-        "recept": [["light", "rain"]] // может sun и rain?
+        "recept": [["light", "rain"], ["sun", "rain"]] // может sun и rain?
     },
     {
         "id": 53,
