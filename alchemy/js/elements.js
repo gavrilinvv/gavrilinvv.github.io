@@ -452,72 +452,66 @@ var elements = [
     },
     {
         "id": 76,
-        "class": "aquarium",
-        "text": "Аквариум",
-        "recept": [["fish", "glass"]]
-    },
-    {
-        "id": 77,
         "class": "shell",
         "text": "Ракушка",
         "recept": [["plankton", "stone"]]
     },
     {
-        "id": 78,
+        "id": 77,
         "class": "snail",
         "text": "Улитка",
         "recept": [["shell", "worm"]]
     },
     {
-        "id": 79,
+        "id": 78,
         "class": "snail",
         "text": "Жемчуг",
         "recept": [["sand", "shell"]]
     },
     {
-        "id": 80,
+        "id": 79,
         "class": "limestone",
         "text": "Известняк",
         "recept": [["stone", "shell"]]
     },
     {
-        "id": 81,
+        "id": 80,
         "class": "cement",
         "text": "Цемент",
         "recept": [["limestone", "clay"]]
     },
     {
-        "id": 82,
+        "id": 81,
         "class": "concrete",
         "text": "Бетон",
         "recept": [["cement", "water"]]
     },
     {
-        "id": 83,
+        "id": 82,
         "class": "brick_house",
         "text": "Кирпичный дом",
         "recept": [["concrete", "brick"]]
     },
     {
-        "id": 84,
+        "id": 83,
         "class": "skyscraper",
         "text": "Небоскреб",
         "recept": [["brick_house", "glass"]]
     },
     {
-        "id": 85,
+        "id": 84,
         "class": "city",
         "text": "Город",
         "recept": [["skyscraper", "skyscraper"]]
     },
     {
-        "id": 86,
+        "id": 85,
         "class": "country",
         "text": "Страна",
         "recept": [["city", "city"]]
     },
     {
-        "id": 87,
+        "id": 86,
         "class": "continent",
         "text": "Континент",
         "recept": [["country", "country"]]
