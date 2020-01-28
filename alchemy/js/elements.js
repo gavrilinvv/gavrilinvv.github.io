@@ -464,7 +464,7 @@ var elements = [
     },
     {
         "id": 78,
-        "class": "snail",
+        "class": "pearl",
         "text": "Жемчуг",
         "recept": [["sand", "shell"]]
     },
@@ -515,6 +515,30 @@ var elements = [
         "class": "continent",
         "text": "Континент",
         "recept": [["country", "country"]]
+    },
+    {
+        "id": 87,
+        "class": "paper",
+        "text": "Бумага",
+        "recept": [["tree", "pressure"],["tree", "stone"]]
+    },
+    {
+        "id": 88,
+        "class": "map",
+        "text": "Карта",
+        "recept": [["paper", "continent"]]
+    },
+    {
+        "id": 89,
+        "class": "compas",
+        "text": "Компас",
+        "recept": [["magnet", "map"]]
+    },
+    {
+        "id": 90,
+        "class": "mail",
+        "text": "Почта",
+        "recept": [["paper", "bird"]]
     },
 
     
