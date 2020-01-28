@@ -540,6 +540,12 @@ var elements = [
         "text": "Почта",
         "recept": [["paper", "bird"]]
     },
+    {
+        "id": 91,
+        "class": "oil",
+        "text": "Масло",
+        "recept": [["sunflower", "pressure"]]
+    },
 
     
 ];
