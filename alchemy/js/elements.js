@@ -530,7 +530,7 @@ var elements = [
     },
     {
         "id": 89,
-        "class": "compas",
+        "class": "compass",
         "text": "Компас",
         "recept": [["magnet", "map"]]
     },
