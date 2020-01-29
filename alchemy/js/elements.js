@@ -546,6 +546,24 @@ var elements = [
         "text": "Масло",
         "recept": [["sunflower", "pressure"]]
     },
+    {
+        "id": 92,
+        "class": "paint",
+        "text": "Краска",
+        "recept": [["pressure", "flower"]]
+    },
+    {
+        "id": 93,
+        "class": "thunder",
+        "text": "Гром",
+        "recept": [["rain", "rain"]]
+    },
+    {
+        "id": 94,
+        "class": "lightning",
+        "text": "Молния",
+        "recept": [["rain", "rain"]]
+    },
 
     
 ];

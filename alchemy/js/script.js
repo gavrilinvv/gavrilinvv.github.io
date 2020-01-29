@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             btnInfo.style.display = 'none';
             containerElems.style.display = 'flex';
             search.style.display = 'block';
+            search.value = '';
             catalogInfo.style.display = 'none';
             selectedElements = [];
         });
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             catalogBlock.classList.remove('_opened');
             bg.classList.remove('_show');
             btnInfo.style.display = 'none';
-            // TODO сделать сброс выбранных элементов в каталоге
+            search.value = '';
         })
 
         // TODO сделать вывод рецептов по элементу
@@ -434,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // создание сообщения о создании нового элемента
     function createNoticeNewElem(a, b, result) {
-        return 'Новый элемент:<br>'+a.getAttribute('data-text')+' + '+b.getAttribute('data-text')+' = '+result.text+'<br>';
+        return '<br>Новый элемент:<br>'+a.getAttribute('data-text')+' + '+b.getAttribute('data-text')+' = '+result.text+'<br>';
     }
 
     function isLastElem(target) {
@@ -546,13 +547,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function newNotice(msg) {
-        var noticeContainer = document.querySelectorAll('.tools__section')[0];
-        notice.innerHTML += msg+'<br>';
-        //noticeContainer.scrollTop = noticeContainer.scrollHeight;
-        scrollBar.getScrollElement().scrollTop = 100;
-        // $(notice).delay(3000).fadeOut(1000, function() {
-        //     $(this).text('');
-        // }).fadeIn(1);
+        var noticeContainer = document.querySelectorAll('.notice')[0];
+        notice.innerHTML += msg;
+        scrollBar.getScrollElement().scrollTop = noticeContainer.scrollHeight;
     }
 
     // определение устройства
