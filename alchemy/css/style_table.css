@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+    font-family: sans-serif;
+}
+td {
+    padding: 10px;
+}
+tr:hover {
+    background-color: aquamarine;
+}
+
+.search {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
