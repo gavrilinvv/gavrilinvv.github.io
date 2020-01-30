@@ -264,16 +264,18 @@ document.addEventListener('DOMContentLoaded', function() {
             for(var i = 0; i < elems.length; i++) {
                 _creating(elems[i]);
                 if(!isMobile()) {
-                    _animationElement();
+                    _animateShowElement();
                 }
+                _animateNewElement();
                 updateLocalStorage(elems[i].id);
                 updateCounter();
             }
         } else {
             _creating(elems, coords);
             if(!isMobile()) {
-                _animationElement();
+                _animateShowElement();
             }
+            _animateNewElement();
             updateLocalStorage(elems.id);
             updateCounter();
         }
@@ -364,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             elem.appendChild(img);
             elem.appendChild(name);
-            if(_isNewElement(id) && !isMobile()) {
+            if(_isNewElement(id)) {
                 elem.appendChild(newEffect);
             }
             return elem;
@@ -375,11 +377,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return saves.indexOf(id) == -1;
         }
 
-        function _animationElement() {
+        function _animateShowElement() {
             $('.element').removeClass('_scaling'); // анимация появления
             setTimeout(function() {
                 $('.element').css({transition: '0s'}); // убираем плавность чтобы не отразилось на последующем перемещении элемента
             }, 400);
+        }
+        function _animateNewElement() {
             setTimeout(function() {
                 $('.element__new').remove();
             }, 300);
