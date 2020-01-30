@@ -343,6 +343,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             name.innerText = text;
 
+            var newEffect = document.createElement('div');
+            newEffect.classList.add('element__new');
+
             // генерируем координаты на основе размеров поля, если не указаны конкретно
             if(!coords) {
                 coords = genRandomCoord(area.offsetWidth, area.offsetHeight);
@@ -361,7 +364,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             elem.appendChild(img);
             elem.appendChild(name);
+            if(_isNewElement(id)) {
+                elem.appendChild(newEffect);
+            }
             return elem;
+        }
+
+        function _isNewElement(id) {
+            var saves = JSON.parse(localStorage.getItem(LSName));
+            return saves.indexOf(id) == -1;
         }
 
         function _animationElement() {
@@ -369,6 +380,9 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 $('.element').css({transition: '0s'}); // убираем плавность чтобы не отразилось на последующем перемещении элемента
             }, 400);
+            setTimeout(function() {
+                $('.element__new').remove();
+            }, 300);
         }
     }
 
