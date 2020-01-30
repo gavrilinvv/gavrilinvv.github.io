@@ -53,6 +53,9 @@ body {
         top: -10px;
         animation: wow .3s linear;
         -webkit-animation: wow .3s linear;
+        -moz-animation: wow .3s linear;
+        -o-animation: wow .3s linear;
+        animation: wow .3s linear;
     }
     &__img {
         width: 100px;
@@ -85,12 +88,46 @@ body {
 
 @keyframes wow {
     from {
+        -webkit-transform: scale(0.3) rotate(0deg);
+        -moz-transform: scale(0.3) rotate(0deg);
+        -o-transform: scale(0.3) rotate(0deg);
         transform: scale(0.3) rotate(0deg);
     }
     to {
+        -webkit-transform: scale(1.5) rotate(360deg);
+        -moz-transform: scale(1.5) rotate(360deg);
+        -o-transform: scale(1.5) rotate(360deg);
         transform: scale(1.5) rotate(360deg);
     }
-   }
+}
+@-webkit-keyframes wow {
+    from {
+        -webkit-transform: scale(0.3) rotate(0deg);
+        -moz-transform: scale(0.3) rotate(0deg);
+        -o-transform: scale(0.3) rotate(0deg);
+        transform: scale(0.3) rotate(0deg);
+    }
+    to {
+        -webkit-transform: scale(1.5) rotate(360deg);
+        -moz-transform: scale(1.5) rotate(360deg);
+        -o-transform: scale(1.5) rotate(360deg);
+        transform: scale(1.5) rotate(360deg);
+    }
+}
+@-moz-keyframes wow {
+    from {
+        -webkit-transform: scale(0.3) rotate(0deg);
+        -moz-transform: scale(0.3) rotate(0deg);
+        -o-transform: scale(0.3) rotate(0deg);
+        transform: scale(0.3) rotate(0deg);
+    }
+    to {
+        -webkit-transform: scale(1.5) rotate(360deg);
+        -moz-transform: scale(1.5) rotate(360deg);
+        -o-transform: scale(1.5) rotate(360deg);
+        transform: scale(1.5) rotate(360deg);
+    }
+}
 
 .bg {
     width: 100%;
@@ -219,7 +256,6 @@ body {
         display: -ms-flexbox;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
         padding: 20px 0 0 0;
         margin: 0 0 60px 0;
         overflow-y: scroll;

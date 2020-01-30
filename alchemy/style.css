@@ -64,6 +64,7 @@ body {
   top: -10px;
   animation: wow .3s linear;
   -webkit-animation: wow .3s linear;
+  animation: wow .3s linear;
 }
 
 .element__img {
@@ -101,25 +102,25 @@ body {
   color: #ce1718;
 }
 
-@-webkit-keyframes wow {
-  from {
-    -webkit-transform: scale(0.3) rotate(0deg);
-            transform: scale(0.3) rotate(0deg);
-  }
-  to {
-    -webkit-transform: scale(1.5) rotate(360deg);
-            transform: scale(1.5) rotate(360deg);
-  }
-}
-
 @keyframes wow {
   from {
     -webkit-transform: scale(0.3) rotate(0deg);
-            transform: scale(0.3) rotate(0deg);
+    transform: scale(0.3) rotate(0deg);
   }
   to {
     -webkit-transform: scale(1.5) rotate(360deg);
-            transform: scale(1.5) rotate(360deg);
+    transform: scale(1.5) rotate(360deg);
+  }
+}
+
+@-webkit-keyframes wow {
+  from {
+    -webkit-transform: scale(0.3) rotate(0deg);
+    transform: scale(0.3) rotate(0deg);
+  }
+  to {
+    -webkit-transform: scale(1.5) rotate(360deg);
+    transform: scale(1.5) rotate(360deg);
   }
 }
 
@@ -290,8 +291,6 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   padding: 20px 0 0 0;
   margin: 0 0 60px 0;
   overflow-y: scroll;
