@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             elem.appendChild(img);
             elem.appendChild(name);
-            if(_isNewElement(id)) {
+            if(_isNewElement(id) && !isMobile()) {
                 elem.appendChild(newEffect);
             }
             return elem;
