@@ -62,8 +62,8 @@ body {
   background-size: cover;
   position: absolute;
   top: -10px;
-  animation: wow .3s linear infinite;
-  -webkit-animation: wow .3s linear infinite;
+  animation: wow .3s linear;
+  -webkit-animation: wow .3s linear;
 }
 
 .element__img {
