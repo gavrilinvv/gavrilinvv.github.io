@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var value = this.value.toLowerCase(); // перевод входящего значения в нижний регистр
         var cells = Array.prototype.slice.call(table.querySelectorAll('td'), 0); // получаем все ячейки
         var cellText = '';
+        var mainCellText = '';
 
         // берем из всех ячеек только заполненные
         cells = cells.filter(function(item) {
@@ -49,11 +50,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
         cells.forEach(function(cell) {
             cellText = cell.innerText.toLowerCase(); // переводим текст каждой ячейки в нижний регистр
+            mainCellText = cell.parentNode.children[0].innerText.toLowerCase(); // тоже самое индивидуально для 1 столбца (целевой элемент)
 
             /* если в тексте ячейки есть вхождение из поискового запроса,
             то обращаемся к родителю ячейки (строке) и делаем ее видимой,
             иначе - скрываем */
             cell.parentNode.style.display = (cellText.indexOf(value) !== -1) ? 'table-row' : 'none'
+            
+            // если 1 ячейка в строке совпадает с искомым текстом, то принудительно выводим строку
+            if( mainCellText.indexOf(value) !== -1 ) {
+                cell.parentNode.style.display = 'table-row';
+            }
         })
     })
 });
