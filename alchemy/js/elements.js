@@ -172,7 +172,7 @@ var elements = [
         "id": 29,
         "class": "turtle",
         "text": "Черепаха",
-        "recept": [["egg", "life"]]
+        "recept": [["sand", "life"]]
     },
     {
         "id": 30,
@@ -390,12 +390,12 @@ var elements = [
         "text": "Кактус",
         "recept": [["desert", "tree"]]
     },
-    {
-        "id": 66,
-        "class": "dino",
-        "text": "Динозавр",
-        "recept": [["egg", "ground"]]
-    },
+    // {
+    //     "id": 66,
+    //     "class": "dino",
+    //     "text": "Динозавр",
+    //     "recept": [["egg", "ground"]]
+    // },
     {
         "id": 67,
         "class": "dragon",
