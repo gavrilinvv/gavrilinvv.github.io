@@ -56,6 +56,9 @@ body {
         -moz-animation: wow .3s linear;
         -o-animation: wow .3s linear;
         animation: wow .3s linear;
+        @media screen and (max-width: 768px) {
+            height: 150%;
+        }
     }
     &__img {
         width: 100px;

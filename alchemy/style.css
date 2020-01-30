@@ -67,6 +67,12 @@ body {
   animation: wow .3s linear;
 }
 
+@media screen and (max-width: 768px) {
+  .element__new {
+    height: 150%;
+  }
+}
+
 .element__img {
   width: 100px;
   height: 80px;
