@@ -310,7 +310,7 @@ var elements = [
         "id": 52,
         "class": "rainbow",
         "text": "Радуга",
-        "recept": [["light", "rain"], ["sun", "rain"]] // может sun и rain?
+        "recept": [["light", "rain"], ["sun", "rain"]]
     },
     {
         "id": 53,
@@ -563,6 +563,18 @@ var elements = [
         "class": "lightning",
         "text": "Молния",
         "recept": [["rain", "rain"]]
+    },
+    {
+        "id": 95,
+        "class": "hen",
+        "text": "Курица",
+        "recept": [["egg", "life"]]
+    },
+    {
+        "id": 96,
+        "class": "dilemma",
+        "text": "Дилемма",
+        "recept": [["egg", "hen"]]
     },
 
     

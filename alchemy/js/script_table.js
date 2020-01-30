@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var recept1 = '';
     var recept2 = '';
 
+    // заполняем таблицу строками из списка элементов
     elements.forEach(function(element, i) {
         recept1 = getRecept(i, 0);
         recept2 = getRecept(i, 1);
@@ -17,13 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     function getRecept(index, variant) {
         var element = elements[index];
-        if(!element.recept || !element.recept[variant]) return '';
-        var recept = element.recept[variant];
-        var receptElem1 = translateElement(recept[0]);
-        var receptElem2 = translateElement(recept[1]);
-        return receptElem1+' + '+receptElem2;
+        if(!element.recept || !element.recept[variant]) return ''; // если нет рецептов вообще или нужного рецепта, то отдаем пустоту
+        var recept = element.recept[variant]; // получаем 1 или 2 рецепт, в зависимости от аргумента variant
+        var receptElem1 = translateElement(recept[0]); // получаем 1 слово из рецепта
+        var receptElem2 = translateElement(recept[1]); // получаем 2 слово из рецепта
+        return receptElem1+' + '+receptElem2; // отдаем переведенный рецепт
     }
 
+    // переводчик названия элемента
     function translateElement(engName) {
         var res = '';
         elements.forEach(function(element, i) {
@@ -34,19 +36,24 @@ document.addEventListener('DOMContentLoaded', function() {
         return res;
     }
 
-    search.addEventListener('input', function(e) {
-        var value = this.value.toLowerCase();
-        var cells = table.querySelectorAll('td');
+    // поиск по элементу
+    search.addEventListener('input', function() {
+        var value = this.value.toLowerCase(); // перевод входящего значения в нижний регистр
+        var cells = Array.prototype.slice.call(table.querySelectorAll('td'), 0); // получаем все ячейки
         var cellText = '';
 
-        cells = $(cells).filter(function(i, item) {
+        // берем из всех ячеек только заполненные
+        cells = cells.filter(function(item) {
             return item.innerText !== '';
         });
 
-        $(cells).each(function(i, cell) {
-            cellText = $(cell).text().toLowerCase();
+        cells.forEach(function(cell) {
+            cellText = cell.innerText.toLowerCase(); // переводим текст каждой ячейки в нижний регистр
 
-            $(cell).parent().css({display: (cellText.indexOf(value) !== -1) ? 'table-row' : 'none'});
+            /* если в тексте ячейки есть вхождение из поискового запроса,
+            то обращаемся к родителю ячейки (строке) и делаем ее видимой,
+            иначе - скрываем */
+            cell.parentNode.style.display = (cellText.indexOf(value) !== -1) ? 'table-row' : 'none'
         })
     })
 });
