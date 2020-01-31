@@ -1,12 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    // var mc = new Hammer.Manager(document);
-    // mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
-    // mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan')]);        
-    // mc.add( new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 10, posThreshold: 10 }));
-    // mc.add(new Hammer.Tap( { event: 'singletap' } ));
-    // mc.add( new Hammer.Swipe()).recognizeWith( [mc.get('pan')] );
-
     var counter = document.querySelector('.counter');
     var notice = document.querySelector('.notice');
     var area = document.querySelector('.area');
@@ -542,6 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }('firstEvent'));
         $(document).on('dbltap', function (e, data) {
             // отменяем функцию, если тапаем по элементу
+            console.log(e, data);
             if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
             var coords = {x: data.x, y: data.y};
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
