@@ -1,14 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    var mc = new Hammer.Manager(document);
-    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
-    mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan')]);        
-    mc.add( new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 10, posThreshold: 10 }));
-    //mc.add(new Hammer.Tap( { event: 'singletap' } ));
-    //mc.add( new Hammer.Swipe()).recognizeWith( [mc.get('pan')] );
-
-    var mcElem;
-
     var counter = document.querySelector('.counter');
     var notice = document.querySelector('.notice');
     var area = document.querySelector('.area');
@@ -391,16 +381,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function dblClickCopyElem(elemDOM) {
-        mcElem = new Hammer.Manager(elemDOM);
-        mcElem.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
-        mcElem.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mcElem.get('pan')]);        
-        mcElem.add( new Hammer.Tap({event: 'doubletap', taps: 2 }));
-        mcElem.add(new Hammer.Tap( { event: 'singletap' } ));
-        mcElem.add( new Hammer.Swipe()).recognizeWith( [mcElem.get('pan')] );
-
-        mcElem.on("doubletap", function(e) {
+        $(elemDOM).on('dbltap', function (e, data) {
+            console.log(data);
             copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
-            addElement(copyElem, {x: e.srcEvent.pageX+40, y: e.srcEvent.pageY+40});
+            addElement(copyElem, {x: data.x+40, y: data.y+40});
         });
     }
     
@@ -549,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
         }('firstEvent'));
-        mc.on("doubletap", function(e) {
+        $(document).on('dbltap', function (e) {
             // отменяем функцию, если тапаем по элементу
             if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
             var coords = {x: e.pageX, y: e.pageY};
