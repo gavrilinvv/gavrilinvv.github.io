@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var title = document.createElement('p');
             title.classList.add('catalog-elem__txt');
             if(elem.text.length > 10) {
-                title.style.fontSize = '12px';
+                title.style.fontSize = '10px';
             }
             if(isLastElem(elem)) {
                 title.classList.add('catalog-elem__txt-final');
