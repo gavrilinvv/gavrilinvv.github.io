@@ -576,6 +576,18 @@ var elements = [
         "text": "Дилемма",
         "recept": [["egg", "hen"]]
     },
+    {
+        "id": 97,
+        "class": "humidity",
+        "text": "Влажность",
+        "recept": [["air", "water"]]
+    },
+    {
+        "id": 98,
+        "class": "mold",
+        "text": "Плесень",
+        "recept": [["humidity", "bacteria"]]
+    },
 
     
 ];
