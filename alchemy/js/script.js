@@ -381,9 +381,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function dblClickCopyElem(elemDOM) {
-        $(elemDOM).on('dbltap', function (e, data) {
+        //$(elemDOM).on('dbltap', function (e, data) {
+        $$(elemDOM).doubleTap(function(e) {
+            console.log(e);
             copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
-            addElement(copyElem, {x: data.x+40, y: data.y+40});
+            addElement(copyElem, {x: e.touch.x+40, y: e.touch.y+40});
         });
     }
     
@@ -524,22 +526,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // создание 4 базовых элемента при двойном клике на поле
     function dblClickCreateBaseElems() {
-       document.addEventListener('dblclick', function(e) {
-            var coords = {x: e.pageX, y: e.pageY};
-            if(arguments[0] == 'firstEvent') {
-                coords = {x: area.pageX, y: area.pageY};
-            }
-            elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
-            addElement(elems, coords);
-        }('firstEvent'));
-        $(document).on('dbltap', function (e, data) {
+        $$(area).doubleTap(function(e) {
             // отменяем функцию, если тапаем по элементу
-            console.log(e, data);
-            if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
-            var coords = {x: data.x, y: data.y};
+            if(e.target && e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
+            var coords = !e.touch ? {x: area.pageX, y: area.pageY} : {x: e.touch.x, y: e.touch.y};
+
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
         });
+        $$(area).trigger('doubleTap');
+
+        // document.addEventListener('dblclick', function(e) {
+        //     var coords = {x: e.pageX, y: e.pageY};
+        //     if(arguments[0] == 'firstEvent') {
+        //         coords = {x: area.pageX, y: area.pageY};
+        //     }
+        //     elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
+        //     addElement(elems, coords);
+        // }('firstEvent'));
+        // $(document).on('dbltap', function (e, data) {
+        //     console.log('bue');
+        //     // отменяем функцию, если тапаем по элементу
+        //     if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
+        //     var coords = {x: data.x, y: data.y};
+        //     elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
+        //     addElement(elems, coords);
+        // });
     }
 
     function updateCounter() {
