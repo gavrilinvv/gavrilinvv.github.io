@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     var mc = new Hammer.Manager(document);
-    var doubletap = new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 100, posThreshold: 300 });
+    var doubletap = new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 80, posThreshold: 80 });
     mc.add([doubletap]);
 
     var mcElem;
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function dblClickCopyElem(elemDOM) {
         mcElem = new Hammer.Manager(elemDOM);
-        var mcDoubletap = new Hammer.Tap({event: 'mcDoubletap', taps: 2, threshold: 100, posThreshold: 200 });
+        var mcDoubletap = new Hammer.Tap({event: 'mcDoubletap', taps: 2, threshold: 80, posThreshold: 80});
         mcElem.add([mcDoubletap]);
 
         mcElem.on("mcDoubletap", function(e) {
@@ -535,21 +535,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // создание 4 базовых элемента при двойном клике на поле
     function dblClickCreateBaseElems() {
-        document.addEventListener('dblclick', function(e) {
-            var coords = {x: e.pageX, y: e.pageY};
-            if(arguments[0] == 'firstEvent') {
-                coords = {x: area.pageX, y: area.pageY};
-            }
-            elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
-            addElement(elems, coords);
-        }('firstEvent'));
+        var coords = {x: area.pageX, y: area.pageY};
+        elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
+        addElement(elems, coords);
+
         mc.on("doubletap", function(e) {
-            // отменяем функцию, если тапаем по элементу
-            if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
+            if( e.target.parentNode && e.target.parentNode.classList.contains('element') ) return false;
             var coords = {x: e.pageX, y: e.pageY};
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
         });
+
+
+        // document.addEventListener('dblclick', function(e) {
+        //     var coords = {x: e.pageX, y: e.pageY};
+        //     if(arguments[0] == 'firstEvent') {
+        //         coords = {x: area.pageX, y: area.pageY};
+        //     }
+        //     elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
+        //     addElement(elems, coords);
+        // }('firstEvent'));
+        // mc.on("doubletap", function(e) {
+        //     // отменяем функцию, если тапаем по элементу
+        //     if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
+        //     var coords = {x: e.pageX, y: e.pageY};
+        //     elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
+        //     addElement(elems, coords);
+        // });
     }
 
     function updateCounter() {
