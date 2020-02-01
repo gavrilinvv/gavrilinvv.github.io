@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    var mc = new Hammer.Manager(document);   
+    var mc = new Hammer.Manager(document);
     var doubletap = new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 100, posThreshold: 300 });
     mc.add([doubletap]);
 
@@ -389,13 +389,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function dblClickCopyElem(elemDOM) {
         mcElem = new Hammer.Manager(elemDOM);
-        mcElem.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
-        mcElem.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mcElem.get('pan')]);        
-        mcElem.add( new Hammer.Tap({event: 'doubletap', taps: 2 }));
-        mcElem.add(new Hammer.Tap( { event: 'singletap' } ));
-        mcElem.add( new Hammer.Swipe()).recognizeWith( [mcElem.get('pan')] );
+        var mcDoubletap = new Hammer.Tap({event: 'mcDoubletap', taps: 2, threshold: 100, posThreshold: 200 });
+        mcElem.add([mcDoubletap]);
 
-        mcElem.on("doubletap", function(e) {
+        mcElem.on("mcDoubletap", function(e) {
             copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
             addElement(copyElem, {x: e.srcEvent.pageX+40, y: e.srcEvent.pageY+40});
         });
