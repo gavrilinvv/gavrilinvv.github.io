@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    var mc = new Hammer.Manager(document);
+    mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+    mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan')]);        
+    mc.add( new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 10, posThreshold: 10 }));
+    //mc.add(new Hammer.Tap( { event: 'singletap' } ));
+    //mc.add( new Hammer.Swipe()).recognizeWith( [mc.get('pan')] );
+
+    var mcElem;
+
     var counter = document.querySelector('.counter');
     var notice = document.querySelector('.notice');
     var area = document.querySelector('.area');
@@ -186,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var title = document.createElement('p');
             title.classList.add('catalog-elem__txt');
             if(elem.text.length > 10) {
-                title.style.fontSize = '10px';
+                title.style.fontSize = '12px';
             }
             if(isLastElem(elem)) {
                 title.classList.add('catalog-elem__txt-final');
@@ -381,11 +391,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function dblClickCopyElem(elemDOM) {
-        //$(elemDOM).on('dbltap', function (e, data) {
-        $$(elemDOM).doubleTap(function(e) {
-            console.log(e);
+        mcElem = new Hammer.Manager(elemDOM);
+        mcElem.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
+        mcElem.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mcElem.get('pan')]);        
+        mcElem.add( new Hammer.Tap({event: 'doubletap', taps: 2 }));
+        mcElem.add(new Hammer.Tap( { event: 'singletap' } ));
+        mcElem.add( new Hammer.Swipe()).recognizeWith( [mcElem.get('pan')] );
+
+        mcElem.on("doubletap", function(e) {
             copyElem = _getElementByID(e.target.parentNode.getAttribute('data-id'));
-            addElement(copyElem, {x: e.touch.x+40, y: e.touch.y+40});
+            addElement(copyElem, {x: e.srcEvent.pageX+40, y: e.srcEvent.pageY+40});
         });
     }
     
@@ -526,32 +541,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // создание 4 базовых элемента при двойном клике на поле
     function dblClickCreateBaseElems() {
-        $$(area).doubleTap(function(e) {
+        document.addEventListener('dblclick', function(e) {
+            var coords = {x: e.pageX, y: e.pageY};
+            if(arguments[0] == 'firstEvent') {
+                coords = {x: area.pageX, y: area.pageY};
+            }
+            elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
+            addElement(elems, coords);
+        }('firstEvent'));
+        mc.on("doubletap", function(e) {
             // отменяем функцию, если тапаем по элементу
-            if(e.target && e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
-            var coords = !e.touch ? {x: area.pageX, y: area.pageY} : {x: e.touch.x, y: e.touch.y};
-
+            if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
+            var coords = {x: e.pageX, y: e.pageY};
             elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
             addElement(elems, coords);
         });
-        $$(area).trigger('doubleTap');
-
-        // document.addEventListener('dblclick', function(e) {
-        //     var coords = {x: e.pageX, y: e.pageY};
-        //     if(arguments[0] == 'firstEvent') {
-        //         coords = {x: area.pageX, y: area.pageY};
-        //     }
-        //     elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
-        //     addElement(elems, coords);
-        // }('firstEvent'));
-        // $(document).on('dbltap', function (e, data) {
-        //     console.log('bue');
-        //     // отменяем функцию, если тапаем по элементу
-        //     if(e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
-        //     var coords = {x: data.x, y: data.y};
-        //     elems = elements.filter(function(item) {return item.isBase;}) // фильтруем только по базовым
-        //     addElement(elems, coords);
-        // });
     }
 
     function updateCounter() {
