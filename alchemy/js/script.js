@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     var mc = new Hammer.Manager(document);   
-    var doubletap = new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 100, posThreshold: 500 });
+    var doubletap = new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 100, posThreshold: 300 });
     mc.add([doubletap]);
 
     var mcElem;
