@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     var mc = new Hammer.Manager(document);
     var doubletap = new Hammer.Tap({event: 'doubletap', taps: 2, threshold: 80, posThreshold: 80 });
     mc.add([doubletap]);
@@ -43,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSimpleBar();
     initCatalog();
     initInfo();
+    initPreloader();
 
     function initEvents() {
         dblClickCreateBaseElems();
@@ -583,6 +583,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initSimpleBar() {
         scrollBar = new SimpleBar(document.querySelector('.tools__section'), { autoHide: false });
+    }
+
+    // предзагрузка изображений
+    function initPreloader() {
+        $.preloadImages = function()
+        {
+            for(var i = 0; i < arguments.length; i++) {
+                $('<img>').attr('src', arguments[ i ]);
+            }
+        };
+        elements.forEach(function(elem) {
+            $.preloadImages('./img/elements/'+elem.class+'.png');
+        });
+        $.preloadImages('./img/new_effect.png');
+        $.preloadImages('./img/list.png');
+        $.preloadImages('./img/info.png');
+        $.preloadImages('./img/remove.svg');
     }
 
     function findGetParameter(parameterName) {
