@@ -1,72 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/simplebar.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Alchemy</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="css/simplebar.min.css">
+	<link rel="stylesheet" href="style.css">
+	<title>Alchemy</title>
 </head>
+
 <body>
 
-    <div class="area">
-        <div class="counter"></div>
+	<div class="area">
+		<div class="counter"></div>
 
-        <div class="bg"></div>
-        <div class="catalog">
-            <div class="catalog__container">
-                <div class="catalog__title">Каталог доступных элементов</div>
-                <div class="catalog__close">&times;</div>
-                <div class="catalog__search">
-                    <input type="text" placeholder="Найти">
-                </div>
-                <div class="catalog__content">
-                    <div class="catalog__elems"></div>
-                    <div class="catalog__info">
-                        <div class="catalog__info-back">❮</div>
-                        <h3 class="catalog__info-title"></h3>
-                    </div>
-                    <div class="catalog__controls">
-                        <div class="catalog__btn-add">Добавить</div>
-                        <div class="catalog__btn-info">Об элементе</div>
-                    </div>
-                </div>
-            </div>
-        </div>  
+		<div class="bg"></div>
+		<div class="catalog">
+			<div class="catalog__container">
+				<div class="catalog__title">Каталог доступных элементов</div>
+				<div class="catalog__close">&times;</div>
+				<div class="catalog__search">
+					<input type="text" placeholder="Найти">
+				</div>
+				<div class="catalog__content">
+					<div class="catalog__elems"></div>
+					<div class="catalog__info">
+						<div class="catalog__info-back">❮</div>
+						<h3 class="catalog__info-title"></h3>
+					</div>
+					<div class="catalog__info-content">
+						<div class="catalog__info-desc"></div>
+						<div class="catalog__info-recepts">
+							<h3>Доступные рецепты</h3>
+							<ul class="recepts-list"></ul>
+						</div>
+					</div>
+					<div class="catalog__controls">
+						<div class="catalog__btn-add">Добавить</div>
+						<div class="catalog__btn-info">Об элементе</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        
-        <div class="info">
-            <div class="info__container">
-                <div class="info__title">Инфо</div>
-                <div class="info__close">&times;</div>
-                <div class="info__content">
-                    <p>Создавайте новые элементы, комбинируя существующие друг с другом.</p><br>
-                    <p>Чтобы удалить элемент, захватите его и перенесите в корзину в нижней части экрана.</p><br>
-                    <p>Чтобы взять уже созданный элемент, выберите его из каталога доступных элементов.</p><br>
-                    <p>Чтобы скопировать элемент, кликните по нему два раза.</p><br>
-                    <p>Символ <span class="info-mark">*</span> около элемента означает, что данный элемент конечный.</p>
-                </div>
-            </div>
-        </div>
 
-    </div>
-    <div class="tools">
-        <div class="tools__section">
-            <div class="notice"></div>
-        </div>
-        <div class="tools__section">
-            <div class="tool tool__catalog" title="Каталог элементов"></div>
-            <div class="tool tool__info" title="Обучение"></div>
-            <div class="tool tool__remove" title="Перенесите сюда элемент чтобы удалить его"></div>
-        </div>
-    </div>    
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.ui.touch-punch.min.js"></script>
-    <script src="js/hammer.min.js"></script>
-    <script src="js/simplebar.min.js"></script>
-    <script src="js/elements.js"></script>
-    <script src="js/script.js"></script>
+		<div class="info">
+			<div class="info__container">
+				<div class="info__title">Как играть</div>
+				<div class="info__close">&times;</div>
+				<div class="info__content">
+
+					<h4>Создание элементов</h4>
+					<p>Создавайте новые элементы, комбинируя существующие друг с другом.</p>
+					<div class="info__img">
+						<img src="img/tutorial/create.gif" alt="">
+					</div>
+
+					<h4>Удаление элементов</h4>
+					<p>Чтобы удалить элемент, захватите его и перенесите в корзину в нижней части экрана.</p>
+					<div class="info__img">
+						<img src="img/tutorial/delete.gif" alt="">
+					</div>
+
+					<h4>Добавление элементов</h4>
+					<p>Чтобы добавить уже созданный элемент на рабочую область, выберите его из каталога доступных элементов и нажмите кнопку «Добавить».</p>
+
+					<h4>Копирование элементов</h4>
+					<p>Чтобы скопировать элемент, кликните по нему два раза.</p>
+					<div class="info__img">
+						<img src="img/tutorial/copy.gif" alt="">
+					</div>
+
+					<p>Символ <span class="info-mark">*</span> около элемента означает, что данный элемент конечный.</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="tools">
+		<div class="tools__section">
+			<div class="notice"></div>
+		</div>
+		<div class="tools__section">
+			<div class="tool tool__catalog" title="Каталог элементов"></div>
+			<div class="tool tool__info" title="Обучение"></div>
+			<div class="tool tool__remove" title="Перенесите сюда элемент чтобы удалить его"></div>
+		</div>
+	</div>
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.ui.touch-punch.min.js"></script>
+	<script src="js/hammer.min.js"></script>
+	<script src="js/simplebar.min.js"></script>
+	<script src="js/elements.js"></script>
+	<script src="js/script.js"></script>
 </body>
+
 </html>

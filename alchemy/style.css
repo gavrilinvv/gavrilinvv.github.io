@@ -198,12 +198,25 @@ body {
 }
 
 .info__content {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   padding: 20px 0;
+}
+
+.info__img {
+  padding: 10px 0;
+  width: 100%;
+}
+
+.info__img img {
+  margin: 0 auto;
+  display: block;
+  border: 1px solid #fff;
+  width: 350px;
+}
+
+@media screen and (max-width: 475px) {
+  .info__img img {
+    width: 100%;
+  }
 }
 
 .info-mark {
@@ -315,6 +328,19 @@ body {
   cursor: pointer;
   font-size: 28px;
   margin: 0 20px 0 0;
+}
+
+.catalog__info-back:hover {
+  color: orange;
+}
+
+.catalog__info-recepts h3 {
+  margin: 20px 0;
+}
+
+.catalog__info-content {
+  display: none;
+  margin: 20px 0 0 0;
 }
 
 .catalog__controls {
@@ -476,6 +502,10 @@ body {
 
 .catalog-elem__check {
   display: none;
+}
+
+.recepts-list li {
+  margin: 0 0 10px 0;
 }
 
 .counter {

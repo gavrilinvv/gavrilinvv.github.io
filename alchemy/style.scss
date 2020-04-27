@@ -185,11 +185,27 @@ body {
         cursor: pointer;
     }
     &__content {
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
+        // display: -webkit-flex;
+        // display: -ms-flexbox;
+        // display: flex;
+        // flex-wrap: wrap;
         padding: 20px 0;
+    }
+
+    &__img {
+        padding: 10px 0;
+        width: 100%;
+
+        & img {
+            margin: 0 auto;
+            display: block;
+            border: 1px solid #fff;
+            width: 350px;
+
+            @media screen  and (max-width: 475px) {
+                width: 100%;
+            }
+        }
     }
     &-mark {
         font-weight: 700;
@@ -217,7 +233,7 @@ body {
         opacity: 1;
         top: 50%;
         z-index: 3;
-    }  
+    }
 
     &__container {
         padding: 20px;
@@ -273,6 +289,19 @@ body {
             cursor: pointer;
             font-size: 28px;
             margin: 0 20px 0 0;
+
+            &:hover {
+                color: orange;
+            }
+        }
+        &-recepts {
+            & h3 {
+                margin: 20px 0;
+            }
+        }
+        &-content {
+            display: none;
+            margin: 20px 0 0 0;
         }
     }
     &__controls {
@@ -390,6 +419,12 @@ body {
         &__check {
             display: none;
         }
+    }
+}
+
+.recepts-list {
+    & li {
+        margin: 0 0 10px 0;
     }
 }
 
