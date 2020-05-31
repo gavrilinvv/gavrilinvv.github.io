@@ -351,7 +351,7 @@ var elements = [
     },
     {
         "id": 59,
-        "class": "pinguin",
+        "class": "penguin",
         "text": "Пингвин",
         "recept": [["bird", "ice"]]
     },
