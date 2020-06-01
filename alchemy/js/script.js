@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	var trash = document.querySelector('.tool__remove');
 	var catalogTool = document.querySelector('.tool__catalog');
 	var infoTool = document.querySelector('.tool__info');
+	var sortTool = document.querySelector('.tool__sort');
 
 	// общая информация
 	var infoClose = document.querySelector('.info__close');
@@ -37,11 +38,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	var btnInfo = document.querySelector('.catalog__btn-info');
 
 	var bg = document.querySelector('.bg');
-	var LSName = 'alData:openedElems';
+	var LSName_opened = 'alData:openedElems';
+	var LSName_abandoned = 'alData:abandonedElems';
 	var scrollBar = '';
 
 	if (findGetParameter('dev')) {
-		localStorage.setItem(LSName, JSON.stringify(flattingElementIds([])));
+		localStorage.setItem(LSName_opened, JSON.stringify(flattingElementIds([])));
 	}
 
 	initLocalStorage();
@@ -51,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	initCatalog();
 	initInfo();
 	initPreloader();
+	loadingAbandonedElems();
 
 	function initEvents() {
 		dblClickCreateBaseElems();
@@ -95,6 +98,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			infoBlock.classList.add('_opened');
 			bg.classList.add('_show');
 		});
+
+		sortTool.addEventListener('click', function () {
+			sortElementsOnBoard();
+		});
 	}
 
 	function initCatalog() {
@@ -114,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			selectedElements = [];
 		});
 		catalogTool.addEventListener('click', function () {
-			saves = JSON.parse(localStorage.getItem(LSName));
+			saves = JSON.parse(localStorage.getItem(LSName_opened));
 			infoBlock.classList.remove('_opened');
 			catalogBlock.classList.add('_opened');
 			bg.classList.add('_show');
@@ -199,12 +206,8 @@ document.addEventListener('DOMContentLoaded', function () {
 				a = a.querySelector('.catalog-elem__txt').innerText;
 				b = b.querySelector('.catalog-elem__txt').innerText;
 
-				if (a > b) {
-					return 1;
-				}
-				if (a < b) {
-					return -1;
-				}
+				if (a > b) {return 1;}
+				if (a < b) {return -1;}
 				return 0;
 			});
 			elemsArray.forEach(function (elem) {
@@ -285,11 +288,18 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// добавление элемента на страницу
-	function addElement(elems, coords) {
+	/*
+		elems - элементы. массив или 1 элемент (обязательный)
+		coords - координаты. объект со свойствами x и y. (необязательный)
+		isOrder - устанавливается в порядке. boolean. (необязательный)
+	*/
+	function addElement(elems, coords, isOrder) {
+		isOrder = isOrder || false;
+
 		// проверяем пришел ли массив в качестве аргумента
 		if (Array.isArray(elems)) {
 			for (var i = 0; i < elems.length; i++) {
-				_creating(elems[i]);
+				_creating(elems[i], null);
 				if (!isMobile()) {
 					_animateShowElement();
 				}
@@ -307,8 +317,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			updateCounter();
 		}
 
-		function _creating(elem, coords) {
-			var elemDOM = _creatingElement(elem, coords);
+		function _creating(elem, coords, isOrder) {
+			var elemDOM = _creatingElement(elem, coords, isOrder);
 			area.appendChild(elemDOM);
 
 			$('[data-name=' + elem.class + ']').draggable({
@@ -388,10 +398,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				а координаты события находятся в центре элементов-родителей,
 				новый элемент будет смещаться вниз и вправо.
 				поэтому смещаем координаты обратно на половину размера иконки */
-				elementWidth = $('.element').css('width').replace('px', '')
-				elementHeight = $('.element').css('height').replace('px', '')
-				coords.x = coords.x - (elementWidth / 2);
-				coords.y = coords.y - (elementHeight / 2);
+				if( !isOrder ) {
+					elementWidth = $('.element').css('width').replace('px', '');
+					elementHeight = $('.element').css('height').replace('px', '');
+					coords.x = coords.x - (elementWidth / 2);
+					coords.y = coords.y - (elementHeight / 2);
+				}
 			}
 
 			elem.setAttribute('style', 'left:' + coords.x + 'px;top:' + coords.y + 'px');
@@ -405,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		function _isNewElement(id) {
-			var saves = JSON.parse(localStorage.getItem(LSName));
+			var saves = JSON.parse(localStorage.getItem(LSName_opened));
 			return saves.indexOf(id) == -1;
 		}
 
@@ -478,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						(elemA == elemB && recept[0] == elemA && recept[1] == elemB))
 				) {
 
-					var saves = JSON.parse(localStorage.getItem(LSName));
+					var saves = JSON.parse(localStorage.getItem(LSName_opened));
 					if (saves.indexOf(elem.id) == -1) {
 						msg = createNoticeNewElem(a, b, elem); // генерируем сообщение (элемент1 + элемент2 = элемент3)
 						newNotice(msg); // выводим уведомление
@@ -515,26 +527,26 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function initLocalStorage() {
-		if (localStorage.getItem(LSName)) {
+		if (localStorage.getItem(LSName_opened)) {
 			filterToOldElements();
 
 			// сделать загрузку открытых элементов
 		} else {
 			var saves = [];
-			localStorage.setItem(LSName, JSON.stringify(saves));
+			localStorage.setItem(LSName_opened, JSON.stringify(saves));
 		}
 	}
 
 	// проверка на то, что элемент уже открыт пользователем
 	function isCreatedElement(id) {
-		var saves = JSON.parse(localStorage.getItem(LSName));
+		var saves = JSON.parse(localStorage.getItem(LSName_opened));
 
 		return (saves.indexOf(id) !== -1) ? true : false;
 	};
 
 	// проверка на наличие недействительных элементов в сохранениях по отношению к актуальному массиву элементов
 	function filterToOldElements() {
-		var saves = JSON.parse(localStorage.getItem(LSName)),
+		var saves = JSON.parse(localStorage.getItem(LSName_opened)),
 			flatElementIds = [],
 			save,
 			index;
@@ -549,7 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (flatElementIds.indexOf(save) == -1) { // если его нет в актуальном массиве
 				index = saves.indexOf(save); // узнаем его индекс
 				saves.splice(index, 1); // удаляем из массива по индексу
-				localStorage.setItem(LSName, JSON.stringify(saves)); // записываем в localStorge обновленный массив
+				localStorage.setItem(LSName_opened, JSON.stringify(saves)); // записываем в localStorge обновленный массив
 			}
 		}
 	}
@@ -561,15 +573,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		return arr;
 	}
 
+	// возвращает уникальные элементы массива
+	function onlyUnique(value, index, self) {
+		return self.indexOf(value) === index;
+	}
+
 	// получение элемента по классу
 	function _getElemByClass(className) {
-		var element;
-		for (var j = 0; j < elements.length; j++) {
-			element = elements[j];
-			if (element.class === className) {
-				return element;
-			}
-		}
+		return elements.filter(function (item) {
+			return item.class == className;
+		})[0];
 	}
 
 	// получение элемента по ID
@@ -580,14 +593,68 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function updateLocalStorage(data) {
-		var saves = JSON.parse(localStorage.getItem(LSName));
+		var saves = JSON.parse(localStorage.getItem(LSName_opened));
 
 		// если элемента с id не существует в хранилище, то добавляем
 		if (saves.indexOf(data) == -1) {
 			saves.push(data);
-			localStorage.setItem(LSName, JSON.stringify(saves));
+			localStorage.setItem(LSName_opened, JSON.stringify(saves));
 		}
 	}
+
+	// сортированное размещение элементов на доске
+	function sortElementsOnBoard() {
+		var elems = getAbandonedElems();
+		var areaX = area.offsetWidth, areaY = area.offsetHeight;
+		var x = 0, y = 50;
+
+		elems.forEach(function(elem) {
+			elem.style.transition = '.5s';
+			elem.style.left = x + 'px';
+			elem.style.top = y + 'px';
+			setTimeout(function () {
+				elem.style.transition = 'none';
+			}, 500);
+
+			if(x <= areaX-200) {
+				x += 100;
+			} else {
+				x = 0;
+				y += 120;
+			}
+		});
+	}
+
+	// размещение элементов на доске
+	function setElementsOnBoard(elems) {
+		elems = elems.map(function(id) {
+			return _getElemByID(id);
+		})
+
+		addElement(elems);
+	}
+
+	// загрузка оставленных элементов после последнего закрытия окна браузера
+	function loadingAbandonedElems() {
+		var elemIds = JSON.parse(localStorage.getItem(LSName_abandoned));
+		if(!elemIds) return;
+
+		setElementsOnBoard(elemIds);
+	}
+
+	// получение элементов с рабочего стола
+	function getAbandonedElems() {
+		return  Array.prototype.slice.call(document.querySelectorAll('.area .element'), 0);
+	}
+
+	// сохранение элементов, которые остались на рабочем столе
+	window.addEventListener("beforeunload", function (e) {
+		var elems = getAbandonedElems();
+		elems = elems.map(function(item) {
+			return parseInt(item.getAttribute('data-id'));
+		}).filter(onlyUnique);
+		localStorage.setItem(LSName_abandoned, JSON.stringify(elems)); // записываем в localStorge
+	});
 
 	// создание 4 базовых элемента при двойном клике на поле
 	function dblClickCreateBaseElems() {
@@ -598,7 +665,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		elems = elements.filter(function (item) {
 			return item.isBase;
 		}) // фильтруем только по базовым
-		addElement(elems, coords);
+		//addElement(elems, coords);
 
 		mc.on("doubletap", function (e) {
 			if (e.target.parentNode && e.target.parentNode.classList.contains('element')) return false;
@@ -630,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function updateCounter() {
-		var count = localStorage.getItem(LSName);
+		var count = localStorage.getItem(LSName_opened);
 		count = JSON.parse(count).length;
 		counter.innerText = count + '/' + elements.length;
 	}
