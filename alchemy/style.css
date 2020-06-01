@@ -595,4 +595,8 @@ body {
 .tool__info {
   background-image: url("img/info.png");
 }
+
+.tool__sort {
+  background-image: url("img/sort.png");
+}
 /*# sourceMappingURL=style.css.map */
