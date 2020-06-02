@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $(table).append(`
             <tr>
                 <td>`+element.text+`</td>
+                <td>`+element.description+`</td>
                 <td>`+recept1+`</td>
                 <td>`+recept2+`</td>
             </tr>
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             то обращаемся к родителю ячейки (строке) и делаем ее видимой,
             иначе - скрываем */
             cell.parentNode.style.display = (cellText.indexOf(value) !== -1) ? 'table-row' : 'none'
-            
+
             // если 1 ячейка в строке совпадает с искомым текстом, то принудительно выводим строку
             if( mainCellText.indexOf(value) !== -1 ) {
                 cell.parentNode.style.display = 'table-row';
