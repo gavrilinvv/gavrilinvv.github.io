@@ -332,11 +332,13 @@ document.addEventListener('DOMContentLoaded', function () {
 					$(trash).show();
 					$(catalogTool).hide();
 					$(infoTool).hide();
+					$(sortTool).hide();
 				},
 				stop: function (e, ui) {
 					$(trash).hide();
 					$(catalogTool).show();
 					$(infoTool).show();
+					$(sortTool).show();
 				}
 			});
 			$('[data-name=' + elem.class + ']').droppable({
