@@ -619,10 +619,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			}, 500);
 
 			if(x <= areaX-200) {
-				x += 100;
+				x += 140;
 			} else {
 				x = 0;
-				y += 120;
+				y += 140;
 			}
 		});
 	}

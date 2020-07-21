@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // заполняем таблицу строками из списка элементов
     elements.forEach(function(element, i) {
         recept1 = getRecept(i, 0);
-        recept2 = getRecept(i, 1);
+		recept2 = getRecept(i, 1);
+
+		var description = (element.description) ? element.description : '';
         $(table).append(`
             <tr>
                 <td>`+element.text+`</td>
-                <td>`+element.description+`</td>
+                <td>`+description+`</td>
                 <td>`+recept1+`</td>
                 <td>`+recept2+`</td>
             </tr>
