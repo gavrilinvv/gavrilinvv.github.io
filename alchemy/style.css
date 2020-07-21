@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'OpenSans';
+  src: url("fonts/OpenSans-Regular.ttf");
+}
+
 * {
-  font-family: sans-serif;
+  font-family: 'OpenSans';
   padding: 0;
   margin: 0;
 }
@@ -92,9 +97,13 @@ body {
 .element__name {
   color: #fff;
   background-color: transparent;
-  text-align: center;
   padding: 10px 0;
   font-size: 16px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 @media screen and (max-width: 768px) {
@@ -104,7 +113,7 @@ body {
 }
 
 .element__name-final:after {
-  content: ' *';
+  content: '\00a0*';
   color: #ce1718;
 }
 
