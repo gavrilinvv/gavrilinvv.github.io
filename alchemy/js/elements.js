@@ -937,6 +937,60 @@ var elements = [{
 			["space", "life"]
 		]
 	},
+	{
+		"id": 105,
+		"class": "lizard",
+		"text": "Ящерица",
+		"description": "",
+		"recept": [
+			["egg", "swamp"]
+		]
+	},
+	{
+		"id": 106,
+		"class": "beast",
+		"text": "Зверь",
+		"description": "",
+		"recept": [
+			["lizard", "ground"]
+		]
+	},
+	{
+		"id": 107,
+		"class": "beast",
+		"text": "Зверь",
+		"description": "",
+		"recept": [
+			["lizard", "ground"]
+		]
+	},
+	{
+		"id": 108,
+		"class": "human",
+		"text": "Человек",
+		"description": "",
+		"recept": [
+			["beast", "life"]
+		]
+	},
+	{
+		"id": 109,
+		"class": "spaceman",
+		"text": "Космонавт",
+		"description": "",
+		"recept": [
+			["space", "human"]
+		]
+	},
+	{
+		"id": 110,
+		"class": "tool",
+		"text": "Инструмент",
+		"description": "",
+		"recept": [
+			["metal", "human"]
+		]
+	},
 
 
 
