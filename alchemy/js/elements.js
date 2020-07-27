@@ -941,7 +941,7 @@ var elements = [{
 		"id": 105,
 		"class": "lizard",
 		"text": "Ящерица",
-		"description": "",
+		"description": "Небольшое пресмыкающееся с удлинённым телом и длинным хвостом, покрытое мелкой роговой чешуёй.",
 		"recept": [
 			["egg", "swamp"]
 		]
@@ -957,15 +957,6 @@ var elements = [{
 	},
 	{
 		"id": 107,
-		"class": "beast",
-		"text": "Зверь",
-		"description": "",
-		"recept": [
-			["lizard", "ground"]
-		]
-	},
-	{
-		"id": 108,
 		"class": "human",
 		"text": "Человек",
 		"description": "",
@@ -974,16 +965,16 @@ var elements = [{
 		]
 	},
 	{
-		"id": 109,
+		"id": 108,
 		"class": "spaceman",
 		"text": "Космонавт",
-		"description": "",
+		"description": "Тот, кто совершает полёты в космическое пространство.",
 		"recept": [
 			["space", "human"]
 		]
 	},
 	{
-		"id": 110,
+		"id": 109,
 		"class": "tool",
 		"text": "Инструмент",
 		"description": "",

@@ -219,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			var box = document.createElement('div');
 			box.classList.add('catalog-elem');
 			box.setAttribute('data-id', elem.id);
+			box.setAttribute('title', elem.text);
 
 			var img = document.createElement('div');
 			img.classList.add('catalog-elem__img');
