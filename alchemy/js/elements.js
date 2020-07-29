@@ -975,13 +975,161 @@ var elements = [{
 	},
 	{
 		"id": 109,
-		"class": "tool",
-		"text": "Инструмент",
+		"class": "tools",
+		"text": "Инструменты",
 		"description": "",
 		"recept": [
 			["metal", "human"]
 		]
 	},
+	{
+		"id": 110,
+		"class": "bear",
+		"text": "Медведь",
+		"description": "",
+		"recept": [
+			["beast", "forest"]
+		]
+	},
+	{
+		"id": 111,
+		"class": "pilot",
+		"text": "Пилот",
+		"description": "",
+		"recept": [
+			["human", "airplane"]
+		]
+	},
+	{
+		"id": 112,
+		"class": "scientist",
+		"text": "Учёный",
+		"description": "",
+		"recept": [
+			["human", "library"]
+		]
+	},
+	{
+		"id": 113,
+		"class": "robot",
+		"text": "Робот",
+		"description": "",
+		"recept": [
+			["scientist", "metal"]
+		]
+	},
+	{
+		"id": 114,
+		"class": "wood",
+		"text": "Древесина",
+		"description": "",
+		"recept": [
+			["tree", "tools"]
+		]
+	},
+	{
+		"id": 115,
+		"class": "wheel",
+		"text": "Колесо",
+		"description": "",
+		"recept": [
+			["wood", "tools"]
+		]
+	},
+	{
+		"id": 116,
+		"class": "boat",
+		"text": "Лодка",
+		"description": "",
+		"recept": [
+			["wood", "water"],
+			["wood", "sea"]
+		]
+	},
+	{
+		"id": 117,
+		"class": "woodpecker",
+		"text": "Дятел",
+		"description": "",
+		"recept": [
+			["wood", "bird"]
+		]
+	},
+	{
+		"id": 118,
+		"class": "bicycle",
+		"text": "Велосипед",
+		"description": "",
+		"recept": [
+			["wheel", "wheel"]
+		]
+	},
+	{
+		"id": 119,
+		"class": "peat",
+		"text": "Торф",
+		"description": "",
+		"recept": [
+			["tree", "swamp"],
+			["wood", "swamp"],
+		]
+	},
+	{
+		"id": 120,
+		"class": "peat",
+		"text": "Торф",
+		"description": "",
+		"recept": [
+			["tree", "swamp"]
+		]
+	},
+	{
+		"id": 121,
+		"class": "petrol",
+		"text": "Нефть",
+		"description": "",
+		"recept": [
+			["peat", "pressure"]
+		]
+	},
+	{
+		"id": 122,
+		"class": "gasoline",
+		"text": "Бензин",
+		"description": "",
+		"recept": [
+			["petrol", "pressure"]
+		]
+	},
+	{
+		"id": 123,
+		"class": "motor",
+		"text": "ДВС",
+		"description": "",
+		"recept": [
+			["petrol", "steam_engine"]
+		]
+	},
+	{
+		"id": 124,
+		"class": "motorcycle",
+		"text": "Мотоцикл",
+		"description": "",
+		"recept": [
+			["motor", "bicycle"]
+		]
+	},
+	{
+		"id": 125,
+		"class": "motor_boat",
+		"text": "Катер",
+		"description": "",
+		"recept": [
+			["motor", "boat"]
+		]
+	},
+
+
 
 
 
