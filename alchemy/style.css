@@ -246,6 +246,8 @@ body ::-webkit-scrollbar-thumb {
   display: block;
   border: 1px solid #fff;
   width: 350px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @media screen and (max-width: 475px) {
@@ -345,8 +347,7 @@ body ::-webkit-scrollbar-thumb {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: 20px 0 0 0;
-  margin: 0 0 60px 0;
+  margin: 20px 0 60px 0;
   overflow-y: scroll;
 }
 
@@ -498,6 +499,13 @@ body ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-transition: .2s;
   transition: .2s;
+}
+
+@media screen and (max-width: 768px) {
+  .catalog-elem:hover {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
 }
 
 .catalog-elem._selected {
