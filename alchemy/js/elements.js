@@ -1076,15 +1076,6 @@ var elements = [{
 	},
 	{
 		"id": 120,
-		"class": "peat",
-		"text": "Торф",
-		"description": "",
-		"recept": [
-			["tree", "swamp"]
-		]
-	},
-	{
-		"id": 121,
 		"class": "petrol",
 		"text": "Нефть",
 		"description": "",
@@ -1093,7 +1084,7 @@ var elements = [{
 		]
 	},
 	{
-		"id": 122,
+		"id": 121,
 		"class": "gasoline",
 		"text": "Бензин",
 		"description": "",
@@ -1102,7 +1093,7 @@ var elements = [{
 		]
 	},
 	{
-		"id": 123,
+		"id": 122,
 		"class": "motor",
 		"text": "ДВС",
 		"description": "",
@@ -1111,7 +1102,7 @@ var elements = [{
 		]
 	},
 	{
-		"id": 124,
+		"id": 123,
 		"class": "motorcycle",
 		"text": "Мотоцикл",
 		"description": "",
@@ -1120,7 +1111,7 @@ var elements = [{
 		]
 	},
 	{
-		"id": 125,
+		"id": 124,
 		"class": "motor_boat",
 		"text": "Катер",
 		"description": "",
@@ -1128,6 +1119,53 @@ var elements = [{
 			["motor", "boat"]
 		]
 	},
+	{
+		"id": 125,
+		"class": "watch",
+		"text": "Часы",
+		"description": "",
+		"recept": [
+			["time", "tools"]
+		]
+	},
+	{
+		"id": 126,
+		"class": "switzerland",
+		"text": "Швейцария",
+		"description": "",
+		"recept": [
+			["watch", "country"]
+		]
+	},
+	{
+		"id": 127,
+		"class": "arable",
+		"text": "Пашня",
+		"description": "",
+		"recept": [
+			["tractor", "ground"]
+		]
+	},
+	{
+		"id": 128,
+		"class": "potatoes",
+		"text": "Картофель",
+		"description": "",
+		"recept": [
+			["tractor", "arable"]
+		]
+	},
+	{
+		"id": 129,
+		"class": "belarus",
+		"text": "Беларусь",
+		"description": "",
+		"recept": [
+			["potatoes", "country"]
+		]
+	},
+
+
 
 
 
