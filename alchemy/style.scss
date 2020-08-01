@@ -565,19 +565,14 @@ body {
 	overflow: hidden;
 	cursor: pointer;
 	z-index: -1;
+	align-items: center;
+	justify-content: space-around;
 
-	&__section:nth-child(1) {
-		width: 50%;
-		border-right: 1px solid $borderColor;
-		cursor: default;
-	}
-
-	&__section:nth-child(2) {
-		display: -webkit-flex;
-		display: -ms-flexbox;
-		display: flex;
-		align-items: center;
-	}
+	// &__section:nth-child(1) {
+	// 	width: 50%;
+	// 	border-right: 1px solid $borderColor;
+	// 	cursor: default;
+	// }
 }
 
 .tool {
@@ -615,4 +610,24 @@ body {
 	&__sort {
 		background-image: url('img/sort.png');
 	}
+
+	&__clear {
+		background-image: url('img/clear_all.png');
+	}
+}
+
+
+.logger {
+	// display: none;
+	opacity: 0;
+	height: 20px;
+	padding: 8px 16px;
+	border-radius: 18px;
+	background: #458cd1;
+	color: #fff;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	transition: .7s;
 }

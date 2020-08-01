@@ -601,21 +601,11 @@ body ::-webkit-scrollbar-thumb {
   overflow: hidden;
   cursor: pointer;
   z-index: -1;
-}
-
-.tools__section:nth-child(1) {
-  width: 50%;
-  border-right: 1px solid #2d85af;
-  cursor: default;
-}
-
-.tools__section:nth-child(2) {
-  display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .tool {
@@ -657,5 +647,25 @@ body ::-webkit-scrollbar-thumb {
 
 .tool__sort {
   background-image: url("img/sort.png");
+}
+
+.tool__clear {
+  background-image: url("img/clear_all.png");
+}
+
+.logger {
+  opacity: 0;
+  height: 20px;
+  padding: 8px 16px;
+  border-radius: 18px;
+  background: #458cd1;
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  -webkit-transition: .7s;
+  transition: .7s;
 }
 /*# sourceMappingURL=style.css.map */
