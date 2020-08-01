@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	var catalogTool = document.querySelector('.tool__catalog');
 	var infoTool = document.querySelector('.tool__info');
 	var sortTool = document.querySelector('.tool__sort');
+	var clearTool = document.querySelector('.tool__clear');
 
 	// общая информация
 	var infoClose = document.querySelector('.info__close');
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	initLocalStorage();
 	initEvents();
 	updateCounter();
-	initSimpleBar();
+	// initSimpleBar();
 	initCatalog();
 	initInfo();
 	initPreloader();
@@ -101,6 +102,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		sortTool.addEventListener('click', function () {
 			sortElementsOnBoard();
+		});
+
+		clearTool.addEventListener('click', function () {
+			clearElementsOnBoard();
 		});
 	}
 
@@ -511,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// создание сообщения о создании нового элемента
 	function createNoticeNewElem(a, b, result) {
-		return '<br>Новый элемент:<br>' + a.getAttribute('data-text') + ' + ' + b.getAttribute('data-text') + ' = ' + result.text + '<br>';
+		return 'Новый элемент: ' + a.getAttribute('data-text') + ' + ' + b.getAttribute('data-text') + ' = ' + result.text + '<br>';
 	}
 
 	function isLastElem(target) {
@@ -628,6 +633,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
+	function clearElementsOnBoard() {
+		getAbandonedElems().forEach(function(elem) {
+			elem.remove();
+		});
+	}
+
 	// размещение элементов на доске
 	function setElementsOnBoard(elems) {
 		elems = elems.map(function(id) {
@@ -651,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// сохранение элементов, которые остались на рабочем столе
-	window.addEventListener("beforeunload", function (e) {
+	window.addEventListener("beforeunload", function () {
 		var elems = getAbandonedElems();
 		elems = elems.map(function(item) {
 			return parseInt(item.getAttribute('data-id'));
@@ -706,9 +717,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function newNotice(msg) {
-		var noticeContainer = document.querySelectorAll('.notice')[0];
-		notice.innerHTML += msg;
-		scrollBar.getScrollElement().scrollTop = noticeContainer.scrollHeight;
+		// var noticeContainer = document.querySelectorAll('.notice')[0];
+		// notice.innerHTML += msg;
+		// scrollBar.getScrollElement().scrollTop = noticeContainer.scrollHeight;
+
+		var logger = document.querySelectorAll('.logger')[0];
+		logger.innerHTML = msg;
+		logger.style.opacity = '1';
+		setTimeout(function() {
+			logger.style.opacity = '0';
+		}, 5000)
 	}
 
 	// определение устройства
