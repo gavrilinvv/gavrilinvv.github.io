@@ -339,12 +339,14 @@ document.addEventListener('DOMContentLoaded', function () {
 					$(catalogTool).hide();
 					$(infoTool).hide();
 					$(sortTool).hide();
+					$(clearTool).hide();
 				},
 				stop: function (e, ui) {
 					$(trash).hide();
 					$(catalogTool).show();
 					$(infoTool).show();
 					$(sortTool).show();
+					$(clearTool).hide();
 				}
 			});
 			$('[data-name=' + elem.class + ']').droppable({
