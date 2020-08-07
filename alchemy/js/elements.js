@@ -1166,8 +1166,8 @@ var elements = [{
 	},
 	{
 		"id": 130,
-		"class": "Гриб",
-		"text": "mushroom",
+		"class": "mushroom",
+		"text": "Гриб",
 		"description": "Низшее растение, не образующее цветков и семян и размножающееся спорами.",
 		"recept": [
 			["ground", "rain"]
