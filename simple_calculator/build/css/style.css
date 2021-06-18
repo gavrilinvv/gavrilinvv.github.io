@@ -34,6 +34,7 @@ body {
     background-color: #ccc;
     border: 0;
     font-size: 18px;
+    text-align: center;
     -webkit-transition: .1s;
     transition: .1s;
     border-radius: 50px;
