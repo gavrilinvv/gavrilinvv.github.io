@@ -53,3 +53,8 @@ body {
       box-shadow: inset #000 0 -1px 1px;
       -webkit-transition: .1s;
       transition: .1s; }
+
+@media screen and (max-width: 1000px) {
+  .numpad__btn:hover {
+    -webkit-box-shadow: 0;
+    box-shadow: 0; } }
