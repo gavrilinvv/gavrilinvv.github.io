@@ -5,18 +5,19 @@ body {
 	background: linear-gradient(to right, #98a4ff, #ff3f40);
 }
 .field {
-  text-align: right;
-  padding: 10px;
-  width: 165px;
-  box-sizing: border-box;
-  font-size: 18px;
-  margin: 0 0 5px 0;
-  border: 0;
+	text-align: right;
+	padding: 10px;
+	width: 165px;
+	box-sizing: border-box;
+	font-size: 18px;
+	margin: 0 0 5px 0;
+	border: 0;
+	border-radius: 10px;
 }
 .calcForm {
 	margin: 200px auto 0 auto;
-  width: 165px;
-  box-sizing: border-box;
+	width: 165px;
+	box-sizing: border-box;
 }
 
 .numpad {
@@ -26,19 +27,25 @@ body {
 	}
 	&__btn {
 		width: 40px;
-	  height: 40px;
-	  cursor: pointer;
+		height: 40px;
+		cursor: pointer;
+		color: #fff;
 		background-color: #ccc;
 		border: 0;
 		font-size: 18px;
 		transition: .1s;
+		border-radius: 50px;
+		box-shadow: inset #000 0 -3px 1px;
+		background: rgba(46,46,46,.3);
+		backdrop-filter: blur(8px);
 		&:hover {
-			background-color: #ffdb6ee3;
-			border: 1px solid #fff;
+			box-shadow: inset #000 0 -3px 1px, #fff 0px 0px 4px 1px;
 			transition: .1s;
 		}
 		&:active {
-			background-color: #fff;
+			// background-color: #c7aa51;
+			box-shadow: inset #000 0 -1px 1px;
+			transition: .1s;
 		}
 	}
 }
