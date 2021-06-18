@@ -56,5 +56,5 @@ body {
 
 @media screen and (max-width: 1000px) {
   .numpad__btn:hover {
-    -webkit-box-shadow: 0;
-    box-shadow: 0; } }
+    -webkit-box-shadow: inset #000 0 -3px 1px;
+    box-shadow: inset #000 0 -3px 1px; } }
